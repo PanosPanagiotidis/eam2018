@@ -1,3 +1,12 @@
-<p>
-  distributionpoint works!
-</p>
+<div *ngIf="page==''">
+    distribution details
+</div>
+<div *ngIf="page=='insert'">
+    distribution insert
+</div>
+<div *ngIf="page=='delivery'">
+    distribution delivery
+</div>
+<div *ngIf="page=='afterdelivery'">
+    distribution afterdelivery
+</div>
