@@ -6,7 +6,7 @@ import { SessionStorageService } from 'ngx-webstorage';
 @Injectable({
   providedIn: 'root'
 })
-export class FreegiversService {
+export class DistributionpointService {
 
   constructor(private http:HttpClient, private sessionSt:SessionStorageService) { }
 }

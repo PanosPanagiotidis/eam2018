@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { HelpService } from './help.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-help',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private helpSer:HelpService, private router:Router) { }
 
   ngOnInit() {
   }
