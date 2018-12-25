@@ -1,3 +1,90 @@
-<p>
-  signup works!
-</p>
+<div class="login-page">
+  <div class="form">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <select id="type" ngModel name=user_type (change)="selectedType()">
+        <option value=''>--Διαλεξε Ιδιότητα--</option>
+        <option *ngFor="let type of types" >{{type}}</option>
+      </select>
+      <div *ngIf="registrationtype==1;">
+          <input type="text" placeholder="Όνομα Εκδοτικού Οίκου" ngModel name="name">
+          <input type="text" placeholder="Διεύθυνση" ngModel name="address">
+          <input type="email" placeholder="e-mail" ngModel name="email">
+          <input type="password" placeholder="Password" ngModel name="password1">
+          <input type="password" placeholder="Επανάληψη Password" ngModel name="password2">
+          <input type="tel" placeholder="Τηλέφωνο" ngModel name="tel">
+          <input type="text" placeholder="Ωράριο Λειτουργίας" ngModel name="time_open">
+          <input type="text" placeholder="Όνοματεπωνυμο Υπευθύνου" ngModel name="senior">
+        <button type="submit">SignUp</button>
+      </div>
+      <div *ngIf="registrationtype==2;">
+        <select id="university_type" ngModel name=university_type (change)="selectedUniversityType()">
+          <option value=''>--Διαλεξε Ιδρυμα--</option>
+          <option *ngFor="let university_type of university_types" >{{university_type}}</option>
+        </select>
+        <div *ngIf="university_chosen!='';">
+          <select id="class_type" ngModel name="class_type">
+            <option value=''>--Διαλεξε Τμήμα--</option>
+            <option *ngFor="let class_type of class_types" >{{class_type}}</option>
+          </select>
+          <input type="number" placeholder="Αριθμός Μητρώου" ngModel name="AM">
+          <input type="email" placeholder="e-mail" ngModel name="email">
+          <input type="password" placeholder="Password" ngModel name="password1">
+          <input type="password" placeholder="Επανάληψη Password" ngModel name="password2">
+          <input type="text" placeholder="Όνομα" ngModel name="name">
+          <input type="text" placeholder="Επίθετο" ngModel name="surname">
+          <input type="tel" placeholder="Τηλέφωνο" ngModel name="tel">
+          <input type="number" placeholder="Τρέχον Εξάμηνο" ngModel name="run_semester">
+          <input type="number" placeholder="Αριθμός συγγραμμάτων πριν τον Ευδοξο" ngModel name="numofbooks">
+          <button type="submit">SignUp</button>
+        </div>
+      </div>
+      <div *ngIf="registrationtype==3;">
+        <input type="text" placeholder="Όνομα Σημείου Διανομής" ngModel name="name">
+        <select id="class_type" ngModel name="class_type">
+          <option value=''>--Διαλεξε Τύπο Σημειου Διανομης--</option>
+          <option *ngFor="let class_type of class_types" >{{class_type}}</option>
+        </select>
+        <input type="text" placeholder="Διεύθυνση" ngModel name="address">
+        <input type="email" placeholder="e-mail" ngModel name="email">
+        <input type="password" placeholder="Password" ngModel name="password1">
+        <input type="password" placeholder="Επανάληψη Password" ngModel name="password2">
+        <input type="tel" placeholder="Τηλέφωνο" ngModel name="tel">
+        <input type="text" placeholder="Ωράριο Λειτουργίας" ngModel name="time_open">
+        <input type="text" placeholder="Όνοματεπωνυμο Υπευθύνου" ngModel name="senior">
+        <button type="submit">SignUp</button>
+      </div>
+      <div *ngIf="registrationtype==4;">
+          <select id="university_type" ngModel name=university_type (change)="selectedUniversityType()">
+            <option value=''>--Διαλεξε Ιδρυμα--</option>
+            <option *ngFor="let university_type of university_types" >{{university_type}}</option>
+          </select>
+          <input type="text" placeholder="Τμήμα" ngModel name="class">
+          <input type="email" placeholder="e-mail" ngModel name="email">
+          <input type="password" placeholder="Password" ngModel name="password1">
+          <input type="password" placeholder="Επανάληψη Password" ngModel name="password2">
+          <input type="tel" placeholder="Τηλέφωνο" ngModel name="tel">
+          <input type="text" placeholder="Ωράριο Λειτουργίας" ngModel name="time_open">
+          <input type="text" placeholder="Όνοματεπωνυμο Υπευθύνου" ngModel name="senior">
+        <button type="submit">SignUp</button>
+      </div>
+      <div *ngIf="registrationtype==5;">
+          <input type="email" placeholder="e-mail" ngModel name="email">
+          <input type="password" placeholder="Password" ngModel name="password1">
+          <input type="password" placeholder="Επανάληψη Password" ngModel name="password2">
+        <button type="submit">SignUp</button>
+      </div>
+      <div *ngIf="registrationtype==6;">
+          <input type="text" placeholder="Όνομα Βιβλιοθήκης" ngModel name="name">
+          <input type="text" placeholder="Διεύθυνση" ngModel name="address">
+          <input type="email" placeholder="e-mail" ngModel name="email">
+          <input type="password" placeholder="Password" ngModel name="password1">
+          <input type="password" placeholder="Επανάληψη Password" ngModel name="password2">
+          <input type="tel" placeholder="Τηλέφωνο" ngModel name="tel">
+          <input type="text" placeholder="Ωράριο Λειτουργίας" ngModel name="time_open">
+          <input type="text" placeholder="Όνοματεπωνυμο Υπευθύνου" ngModel name="senior">
+        <button type="submit">SignUp</button>
+      </div>
+      
+    </form>
+  </div>
+</div>

@@ -10,9 +10,25 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('f') loginform: NgForm;
+
   constructor(private loginSer:LoginService, private router:Router) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    this.loginSer.login(this.loginform.value.email,this.loginform.value.password).subscribe(
+      res=>{
+        if(res)
+          if(this.loginform.value.email=="admin")
+            this.router.navigate(['home']);
+          else
+          this.router.navigate(['customer']);
+        else
+          window.alert("Wrong email and/or password");
+      }
+    )
   }
 
 }
