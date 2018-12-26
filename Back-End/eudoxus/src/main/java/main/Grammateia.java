@@ -15,32 +15,12 @@ public class Grammateia {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-	private String university_name;
-	private String department_name;
-	private String address;
 	private String email;
 	private String password;
 	private String phone;
 	private String time_open;
 	private String senior;
-	public String getUniversity_name() {
-		return university_name;
-	}
-	public void setUniversity_name(String university_name) {
-		this.university_name = university_name;
-	}
-	public String getDepartment_name() {
-		return department_name;
-	}
-	public void setDepartment_name(String department_name) {
-		this.department_name = department_name;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 	public String getEmail() {
 		return email;
 	}

@@ -15,8 +15,6 @@ public class Foithths {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-	private String university_name;
-	private String department_name;
 	private int AM;
 	private String name;
 	private String surname;
@@ -25,18 +23,6 @@ public class Foithths {
 	private String phone;
 	private int running_semester;
 	private int num_of_previous_books;
-	public String getUniversity_name() {
-		return university_name;
-	}
-	public void setUniversity_name(String university_name) {
-		this.university_name = university_name;
-	}
-	public String getDepartment_name() {
-		return department_name;
-	}
-	public void setDepartment_name(String department_name) {
-		this.department_name = department_name;
-	}
 	public int getAM() {
 		return AM;
 	}

@@ -53,7 +53,7 @@ export class SignupService {
         'Authorization': 'Basic ' + btoa(email+':'+password)
       }),
     };
-    return this.http.put<Boolean>(h.host+'/signup_diatheths',httpOptions); 
+    return this.http.put<Boolean>(h.host+'/signup_diatheths',0,httpOptions); 
   }
   signup_bibliothiki(name,address,email,password,tel,time_open,senior){
     const httpOptions={

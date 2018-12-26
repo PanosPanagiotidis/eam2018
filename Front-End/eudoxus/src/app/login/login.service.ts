@@ -19,6 +19,6 @@ export class LoginService {
         'Authorization': 'Basic ' + btoa(email+':'+password)
       }),
     };
-    return this.http.get<boolean>(h.host+'/login',httpOptions);
+    return this.http.get<number>(h.host+'/login',httpOptions);
   }
 }

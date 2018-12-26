@@ -92,7 +92,13 @@ export class SignupComponent implements OnInit {
       window.alert("Ξαναγράψτε τον κωδικό");
       return;
     }
-    this.signupSer.signup_foithths(this.registrationForm.value.university_type,this.registrationForm.value.class_type,this.registrationForm.value.AM, this.registrationForm.value.name,this.registrationForm.value.surname,this.registrationForm.value.email,this.registrationForm.value.password1,this.registrationForm.value.tel,this.registrationForm.value.run_semester,this.registrationForm.value.numofbooks)
+    this.signupSer.signup_foithths(this.registrationForm.value.university_type,this.registrationForm.value.class_type,this.registrationForm.value.AM, this.registrationForm.value.name,this.registrationForm.value.surname,this.registrationForm.value.email,this.registrationForm.value.password1,this.registrationForm.value.tel,this.registrationForm.value.run_semester,this.registrationForm.value.numofbooks).subscribe(
+      res=>{
+        if(res)
+          this.router.navigate(['login']);
+        else
+          window.alert("User with same email already exists!");
+      });
   
   }
   shmeiadianomhs(){
@@ -104,7 +110,13 @@ export class SignupComponent implements OnInit {
       window.alert("Ξαναγράψτε τον κωδικό");
       return;
     }
-    this.signupSer.signup_shmeio_dianomhs(this.registrationForm.value.name,this.registrationForm.value.class_type,this.registrationForm.value.address,this.registrationForm.value.email,this.registrationForm.value.password1, this.registrationForm.value.tel,this.registrationForm.value.time_open,this.registrationForm.value.senior)
+    this.signupSer.signup_shmeio_dianomhs(this.registrationForm.value.name,this.registrationForm.value.class_type,this.registrationForm.value.address,this.registrationForm.value.email,this.registrationForm.value.password1, this.registrationForm.value.tel,this.registrationForm.value.time_open,this.registrationForm.value.senior).subscribe(
+      res=>{
+        if(res)
+          this.router.navigate(['login']);
+        else
+          window.alert("User with same email already exists!");
+      });
   }
   grammateia(){
     if(this.registrationForm.value.university_type=='' || this.registrationForm.value.class=='' || this.registrationForm.value.email=='' || this.registrationForm.value.password1=='' || this.registrationForm.value.tel==''|| this.registrationForm.value.time_open==''|| this.registrationForm.value.senior==''){
@@ -115,7 +127,13 @@ export class SignupComponent implements OnInit {
       window.alert("Ξαναγράψτε τον κωδικό");
       return;
     }
-    this.signupSer.signup_grammateia(this.registrationForm.value.university_type,this.registrationForm.value.class,this.registrationForm.value.email,this.registrationForm.value.password1,this.registrationForm.value.tel,this.registrationForm.value.time_open,this.registrationForm.value.senior)
+    this.signupSer.signup_grammateia(this.registrationForm.value.university_type,this.registrationForm.value.class,this.registrationForm.value.email,this.registrationForm.value.password1,this.registrationForm.value.tel,this.registrationForm.value.time_open,this.registrationForm.value.senior).subscribe(
+      res=>{
+        if(res)
+          this.router.navigate(['login']);
+        else
+          window.alert("User with same email already exists!");
+      });
   }
   diathetes(){
     if(this.registrationForm.value.email==''|| this.registrationForm.value.password1==''){
@@ -126,7 +144,13 @@ export class SignupComponent implements OnInit {
       window.alert("Ξαναγράψτε τον κωδικό");
       return;
     }
-    this.signupSer.signup_diatheths(this.registrationForm.value.email,this.registrationForm.value.password1);
+    this.signupSer.signup_diatheths(this.registrationForm.value.email,this.registrationForm.value.password1).subscribe(
+      res=>{
+        if(res)
+          this.router.navigate(['login']);
+        else
+          window.alert("User with same email already exists!");
+      });
   }
   bibliothikes(){
     if(this.registrationForm.value.name=='' || this.registrationForm.value.address=='' || this.registrationForm.value.email=='' || this.registrationForm.value.password1=='' || this.registrationForm.value.tel=='' || this.registrationForm.value.time_open=='' || this.registrationForm.value.senior==''){
@@ -137,7 +161,13 @@ export class SignupComponent implements OnInit {
       window.alert("Ξαναγράψτε τον κωδικό");
       return;
     }
-    this.signupSer.signup_bibliothiki(this.registrationForm.value.name,this.registrationForm.value.address,this.registrationForm.value.email,this.registrationForm.value.password1, this.registrationForm.value.tel,this.registrationForm.value.time_open,this.registrationForm.value.senior)
+    this.signupSer.signup_bibliothiki(this.registrationForm.value.name,this.registrationForm.value.address,this.registrationForm.value.email,this.registrationForm.value.password1, this.registrationForm.value.tel,this.registrationForm.value.time_open,this.registrationForm.value.senior).subscribe(
+      res=>{
+        if(res)
+          this.router.navigate(['login']);
+        else
+          window.alert("User with same email already exists!");
+      });
   }
 
 }
