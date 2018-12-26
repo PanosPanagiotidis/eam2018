@@ -13,11 +13,11 @@ export class SignupService {
   signup_ekdoths(name,address,email,password,tel,time_open,senior){
     const httpOptions={
       headers: new HttpHeaders({
-        // 'Content-Type':  'application/json',
+        //'Content-Type':  'application/json',
         'Authorization': 'Basic ' + btoa(email+':'+password)
       }),
     };
-    return this.http.put<Boolean>(h.host+'/signup_ekdoths',name+':'+address+':'+email+':'+password+':'+tel+':'+time_open+':'+senior,httpOptions); 
+    return this.http.put<Boolean>(h.host+'/signup_ekdoths',name+':'+address+':'+tel+':'+time_open+':'+senior,httpOptions); 
   }
   signup_foithths(university_type,class_type,AM,name,surname,email,password,tel,running_semester,numofbooks){
     const httpOptions={
@@ -26,7 +26,7 @@ export class SignupService {
         'Authorization': 'Basic ' + btoa(email+':'+password)
       }),
     };
-    return this.http.put<Boolean>(h.host+'/signup_foithtes',university_type+':'+class_type+':'+AM+':'+name+':'+surname+':'+email+':'+password+':'+tel+':'+running_semester+':'+numofbooks,httpOptions); 
+    return this.http.put<Boolean>(h.host+'/signup_foithths',university_type+':'+class_type+':'+AM+':'+name+':'+surname+':'+tel+':'+running_semester+':'+numofbooks,httpOptions); 
   }
   signup_shmeio_dianomhs(name,class_type,address,email,password,tel,time_open,senior){
     const httpOptions={
@@ -35,7 +35,7 @@ export class SignupService {
         'Authorization': 'Basic ' + btoa(email+':'+password)
       }),
     };
-    return this.http.put<Boolean>(h.host+'/signup_shmeio_dianomhs',name+':'+class_type+':'+address+':'+email+':'+password+':'+tel+':'+time_open+':'+senior,httpOptions); 
+    return this.http.put<Boolean>(h.host+'/signup_shmeio_dianomhs',name+':'+class_type+':'+address+':'+tel+':'+time_open+':'+senior,httpOptions); 
   }
   signup_grammateia(university_type,class_type,email,password,phone,time_open,senior){
     const httpOptions={
@@ -62,7 +62,7 @@ export class SignupService {
         'Authorization': 'Basic ' + btoa(email+':'+password)
       }),
     };
-    return this.http.put<Boolean>(h.host+'/signup_bibliothiki',name+':'+address+':'+email+':'+password+':'+tel+':'+time_open+':'+senior,httpOptions); 
+    return this.http.put<Boolean>(h.host+'/signup_bibliothiki',name+':'+address+':'+tel+':'+time_open+':'+senior,httpOptions); 
   }
 
 }

@@ -75,7 +75,13 @@ export class SignupComponent implements OnInit {
       window.alert("Ξαναγράψτε τον κωδικό");
       return;
     }
-    this.signupSer.signup_ekdoths(this.registrationForm.value.name,this.registrationForm.value.address,this.registrationForm.value.email,this.registrationForm.value.password1, this.registrationForm.value.tel,this.registrationForm.value.time_open,this.registrationForm.value.senior)
+    this.signupSer.signup_ekdoths(this.registrationForm.value.name,this.registrationForm.value.address,this.registrationForm.value.email,this.registrationForm.value.password1, this.registrationForm.value.tel,this.registrationForm.value.time_open,this.registrationForm.value.senior).subscribe(
+      res=>{
+        if(res)
+          this.router.navigate(['login']);
+        else
+          window.alert("User with same email already exists!");
+      });
   }
   foithtes(){
     if(this.registrationForm.value.university_type=='' || this.registrationForm.value.class_type=='' || this.registrationForm.value.AM<=0 ||  this.registrationForm.value.name=='' || this.registrationForm.value.surname=='' || this.registrationForm.value.email=='' || this.registrationForm.value.password1=='' || this.registrationForm.value.tel==''|| this.registrationForm.value.run_semester<=0 || this.registrationForm.value.numofbooks<=0){
