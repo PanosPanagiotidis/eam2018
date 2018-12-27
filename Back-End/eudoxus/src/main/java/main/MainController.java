@@ -59,7 +59,6 @@ public class MainController {
 	@Autowired
 	private DepartmentRepository departmentRepository;
 	
-
 	@RequestMapping(method=RequestMethod.PUT,path="/signup_ekdoths") // Map ONLY GET Requests
 	public @ResponseBody boolean signup_ekdoths (@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
 		StringTokenizer stk = new StringTokenizer(encoded," ");
