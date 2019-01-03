@@ -99,7 +99,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book9);
     	Book book10=new Book();
     	book10.setDate(2003);
-    	book10.setISBN("123132-1224124-12314");
+    	book10.setISBN("123132-1224124-123134");
     	book10.setTitle("Αρχιτεκτονικη CPU");
     	book10.setWriters("Nick Tsiougkranas,Alexandros Niarchos");
     	book10.setEkdoths(ekdoths);
