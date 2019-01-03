@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -59,37 +60,7 @@ public class MainController {
 	@Autowired
 	private DepartmentRepository departmentRepository;
 	
-	@RequestMapping(method=RequestMethod.PUT,path="/signup_ekdoths") // Map ONLY GET Requests
-	public @ResponseBody boolean signup_ekdoths (@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
-		StringTokenizer stk = new StringTokenizer(encoded," ");
-		stk.nextToken();
-		encoded = stk.nextToken();
-		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
-		String decoded = new String(decodedBytes);
-		stk = new StringTokenizer(decoded,":");
-		String email=stk.nextToken();
-		if(ekdothsRepository.findByEmail(email)!=null || foiththsRepository.findByEmail(email)!=null || shmeio_DianomhsRepository.findByEmail(email)!=null || grammateiaRepository.findByEmail(email)!=null || bibliothikiRepository.findByEmail(email)!=null || diathethsRepository.findByEmail(email)!=null) {
-			return false;
-		}
-		String password=stk.nextToken();
-		stk = new StringTokenizer(credentials,":");
-		String name=stk.nextToken();
-		String address=stk.nextToken();
-		String phone=stk.nextToken();
-		String time_open=stk.nextToken();
-		String senior=stk.nextToken();
-		Ekdoths newekdoths=new Ekdoths();
-		newekdoths.setEmail(email);
-		newekdoths.setPassword(password);
-		newekdoths.setName(name);
-		newekdoths.setAddress(address);
-		newekdoths.setPhone(phone);
-		newekdoths.setTime_open(time_open);
-		newekdoths.setSenior(senior);
-		ekdothsRepository.save(newekdoths);
-		return true;
-	}
-	
+
 	@RequestMapping(method=RequestMethod.PUT,path="/signup_foithths") // Map ONLY GET Requests
 	public @ResponseBody boolean signup_foithths (@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
 		StringTokenizer stk = new StringTokenizer(encoded," ");
@@ -164,92 +135,6 @@ public class MainController {
 		return true;
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT,path="/signup_grammateia") // Map ONLY GET Requests
-	public @ResponseBody boolean signup_grammateia (@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
-		StringTokenizer stk = new StringTokenizer(encoded," ");
-		stk.nextToken();
-		encoded = stk.nextToken();
-		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
-		String decoded = new String(decodedBytes);
-		stk = new StringTokenizer(decoded,":");
-		String email=stk.nextToken();
-		if(ekdothsRepository.findByEmail(email)!=null || foiththsRepository.findByEmail(email)!=null || shmeio_DianomhsRepository.findByEmail(email)!=null || grammateiaRepository.findByEmail(email)!=null || bibliothikiRepository.findByEmail(email)!=null || diathethsRepository.findByEmail(email)!=null) {
-			return false;
-		}
-		String password=stk.nextToken();
-		stk = new StringTokenizer(credentials,":");
-		String university_name=stk.nextToken();
-		String department_name=stk.nextToken();
-		String phone=stk.nextToken();
-		String time_open=stk.nextToken();
-		String senior=stk.nextToken();
-		University university=universityRepository.findByName(university_name);
-		Department newdepartment=new Department();
-		Grammateia newgrammateia=new Grammateia();
-		newgrammateia.setEmail(email);
-		newgrammateia.setPassword(password);
-		newgrammateia.setPhone(phone);
-		newgrammateia.setSenior(senior);
-		newgrammateia.setTime_open(time_open);
-		grammateiaRepository.save(newgrammateia);
-		newdepartment.setName(department_name);
-		newdepartment.setGrammateia(newgrammateia);
-		departmentRepository.save(newdepartment);
-		university.addDepartments(newdepartment);
-		universityRepository.save(university);
-		return true;
-	}
-	
-	@RequestMapping(method=RequestMethod.PUT,path="/signup_diatheths") // Map ONLY GET Requests
-	public @ResponseBody boolean signup_diatheths (@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
-		StringTokenizer stk = new StringTokenizer(encoded," ");
-		stk.nextToken();
-		encoded = stk.nextToken();
-		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
-		String decoded = new String(decodedBytes);
-		stk = new StringTokenizer(decoded,":");
-		String email=stk.nextToken();
-		if(ekdothsRepository.findByEmail(email)!=null || foiththsRepository.findByEmail(email)!=null || shmeio_DianomhsRepository.findByEmail(email)!=null || grammateiaRepository.findByEmail(email)!=null || bibliothikiRepository.findByEmail(email)!=null || diathethsRepository.findByEmail(email)!=null) {
-			return false;
-		}
-		String password=stk.nextToken();
-		Diatheths newdiatheths=new Diatheths();
-		newdiatheths.setEmail(email);
-		newdiatheths.setPassword(password);
-		diathethsRepository.save(newdiatheths);
-		return true;
-	}
-	
-	@RequestMapping(method=RequestMethod.PUT,path="/signup_bibliothiki") // Map ONLY GET Requests
-	public @ResponseBody boolean signup_bibliothiki (@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
-		StringTokenizer stk = new StringTokenizer(encoded," ");
-		stk.nextToken();
-		encoded = stk.nextToken();
-		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
-		String decoded = new String(decodedBytes);
-		stk = new StringTokenizer(decoded,":");
-		String email=stk.nextToken();
-		if(ekdothsRepository.findByEmail(email)!=null || foiththsRepository.findByEmail(email)!=null || shmeio_DianomhsRepository.findByEmail(email)!=null || grammateiaRepository.findByEmail(email)!=null || bibliothikiRepository.findByEmail(email)!=null || diathethsRepository.findByEmail(email)!=null) {
-			return false;
-		}
-		String password=stk.nextToken();
-		stk = new StringTokenizer(credentials,":");
-		String name=stk.nextToken();
-		String address=stk.nextToken();
-		String phone=stk.nextToken();
-		String time_open=stk.nextToken();
-		String senior=stk.nextToken();
-		Bibliothiki newbibliothiki=new Bibliothiki();
-		newbibliothiki.setEmail(email);
-		newbibliothiki.setPassword(password);
-		newbibliothiki.setName(name);
-		newbibliothiki.setAddress(address);
-		newbibliothiki.setPhone(phone);
-		newbibliothiki.setTime_open(time_open);
-		newbibliothiki.setSenior(senior);
-		bibliothikiRepository.save(newbibliothiki);
-		return true;
-	}
 
 	@RequestMapping(method=RequestMethod.GET, path="/login")
 	public @ResponseBody int loginUser(@RequestHeader("Authorization") String encoded) {
@@ -292,5 +177,151 @@ public class MainController {
 				return 6;
 		}
 		return 0;
+	}
+
+	@RequestMapping(method=RequestMethod.GET, path="/get_foithths_details")
+	public @ResponseBody Foithths get_foithths_details(@RequestHeader("Authorization") String encoded) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		return foithths;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/get_university_details")
+	public @ResponseBody University get_university_details(@RequestHeader("Authorization") String encoded) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		List<University> universities=universityRepository.findAll();
+		for(University univ: universities) {
+			for(Foithths foit:univ.getFoithtes()) {
+				if(foithths.getEmail().equals(foit.getEmail()))
+					return univ;
+			}
+		}
+		return null;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/get_department_details")
+	public @ResponseBody Department get_department_details(@RequestHeader("Authorization") String encoded) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		List<Department> departments=departmentRepository.findAll();
+		for(Department dep: departments) {
+			for(Foithths foit:dep.getFoithtes()) {
+				if(foithths.getEmail().equals(foit.getEmail()))
+					return dep;
+			}
+		}
+		return null;
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT,path="/update_foithths") // Map ONLY GET Requests
+	public @ResponseBody boolean update_foithths (@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		stk = new StringTokenizer(credentials,":");
+		String name=stk.nextToken();
+		String surname=stk.nextToken();
+		String phone=stk.nextToken();
+		String newemail=stk.nextToken();
+		if(!newemail.equals(email)) {
+			if(ekdothsRepository.findByEmail(newemail)!=null || foiththsRepository.findByEmail(newemail)!=null  || shmeio_DianomhsRepository.findByEmail(newemail)!=null || grammateiaRepository.findByEmail(newemail)!=null || bibliothikiRepository.findByEmail(newemail)!=null || diathethsRepository.findByEmail(newemail)!=null) {
+				return false;
+			}
+		}
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		foithths.setEmail(newemail);
+		foithths.setPassword(password);
+		foithths.setPhone(phone);
+		foithths.setName(name);
+		foithths.setSurname(surname);
+		foiththsRepository.save(foithths);
+		return true;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET,path="/getuniversity_types") // Map ONLY GET Requests
+	public @ResponseBody Iterable<University> getuniversity_types (@RequestHeader("Authorization") String encoded) {
+		List<University> universities=new ArrayList<University>();
+		universities=universityRepository.findAll();
+		return universities;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/get_shmeio_details")
+	public @ResponseBody Shmeio_Dianomhs get_shmeio_details(@RequestHeader("Authorization") String encoded) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		Shmeio_Dianomhs shmeio_Dianomhs=shmeio_DianomhsRepository.findByEmail(email);
+		return shmeio_Dianomhs;
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT,path="/update_shmeio") // Map ONLY GET Requests
+	public @ResponseBody boolean update_shmeio (@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		stk = new StringTokenizer(credentials,":");
+		String name=stk.nextToken();
+		String phone=stk.nextToken();
+		String newemail=stk.nextToken();
+		String address=stk.nextToken();
+		String time_open=stk.nextToken();
+		String senior=stk.nextToken();
+		if(!newemail.equals(email)) {
+			if(ekdothsRepository.findByEmail(newemail)!=null || foiththsRepository.findByEmail(newemail)!=null  || shmeio_DianomhsRepository.findByEmail(newemail)!=null || grammateiaRepository.findByEmail(newemail)!=null || bibliothikiRepository.findByEmail(newemail)!=null || diathethsRepository.findByEmail(newemail)!=null) {
+				return false;
+			}
+		}
+		Shmeio_Dianomhs shmeio_Dianomhs=shmeio_DianomhsRepository.findByEmail(email);
+		shmeio_Dianomhs.setEmail(newemail);
+		shmeio_Dianomhs.setPassword(password);
+		shmeio_Dianomhs.setPhone(phone);
+		shmeio_Dianomhs.setName(name);
+		shmeio_Dianomhs.setAddress(address);
+		shmeio_Dianomhs.setSenior(senior);
+		shmeio_Dianomhs.setTime_open(time_open);
+		shmeio_DianomhsRepository.save(shmeio_Dianomhs);
+		return true;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET,path="/getdepartment_types") // Map ONLY GET Requests
+	public @ResponseBody Iterable<Department> getdepartment_types (@RequestHeader("Authorization") String encoded) throws UnsupportedEncodingException {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		String university_name=java.net.URLDecoder.decode(stk.nextToken(), "UTF-8");
+		University university=universityRepository.findByName(university_name);
+		return university.getDepartments();
 	}
 }

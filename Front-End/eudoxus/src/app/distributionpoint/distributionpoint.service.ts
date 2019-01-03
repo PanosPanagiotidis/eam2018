@@ -9,4 +9,26 @@ import { SessionStorageService } from 'ngx-webstorage';
 export class DistributionpointService {
 
   constructor(private http:HttpClient, private sessionSt:SessionStorageService) { }
+
+  getdetails(){
+    var email=this.sessionSt.retrieve('email');
+    var password=this.sessionSt.retrieve('password');
+    const httpOptions={
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + btoa(email+':'+password)
+      }),
+    };
+    return this.http.get<any>(h.host+'/get_shmeio_details',httpOptions); 
+  }
+
+  update_shmeio(name,email,newemail,password,tel,address,time_open,senior){
+    const httpOptions={
+      headers: new HttpHeaders({
+        // 'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + btoa(email+':'+password)
+      }),
+    };
+    return this.http.put<Boolean>(h.host+'/update_shmeio',name+':'+tel+':'+newemail+':'+address+':'+time_open+':'+senior,httpOptions); 
+  }
 }

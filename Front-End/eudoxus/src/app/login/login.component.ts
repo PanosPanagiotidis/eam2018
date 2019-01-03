@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
           if(this.loginform.value.email=="admin")
             this.router.navigate(['home']);
           else
-          this.router.navigate(['customer']);
+            this.router.navigate(['home']);
         else
           window.alert("Wrong email and/or password");
       }

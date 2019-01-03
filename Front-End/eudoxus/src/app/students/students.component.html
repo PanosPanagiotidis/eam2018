@@ -1,5 +1,27 @@
-<div *ngIf="page==''">
-    student details
+<div *ngIf="page=='details'">
+    <div *ngIf="change==0"> 
+        <p>Πανεπιστήμιο:{{university.name}}</p>
+        <p>Τμήμα:{{department.name}}</p>
+        <p>email:{{user.email}}</p>
+        <p>Όνομα:{{user.name}}</p>
+        <p>Επίθετο:{{user.surname}}</p>
+        <p>ΑΜ:{{user.am}}</p>
+        <p>Τηλέφωνο:{{user.phone}}</p>
+        <p>Τρέχων Εξάμηνο:{{user.running_semester}}</p>
+        <p>Αριθμός βιβλίων πρίν το σύστημα έυδοξος:{{user.num_of_previous_books}}</p>
+        <button (click)="change=1">Change</button>
+    </div>
+    <div *ngIf="change==1">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <input type="email" value="{{user.email}}" placeholder="{{user.email}}" ngModel name="email"/>
+            <input type="password"  value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password1"/>
+            <input type="password" value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password2"/>
+            <input type="text" value="{{user.name}}" placeholder="{{user.name}}" ngModel name="name"/>
+            <input type="text" value="{{user.surname}}" placeholder="{{user.surname}}" ngModel name="surname"/>
+            <input type="tel" value="{{user.phone}}" placeholder="{{user.phone}}" ngModel name="tel"/>
+            <button type="submit">Update</button>
+        </form>
+    </div>
 </div>
 <div *ngIf="page=='declaration'">
     student declaration

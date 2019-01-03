@@ -10,4 +10,5 @@ import main.University;
 
 public interface UniversityRepository extends CrudRepository<University, Long>,JpaRepository<University,Long> {
 	public University findByName(String name);
+	public University findById(int id);
 }

@@ -1,5 +1,27 @@
-<div *ngIf="page==''">
-    distribution details
+<div *ngIf="page=='details'">
+    <div *ngIf="change==0"> 
+        <p>Όνομα Σημειου:{{shmeio.name}}</p>
+        <p>Τυπος Σημείου:{{shmeio.type}}</p>
+        <p>email:{{shmeio.email}}</p>
+        <p>Διευθυνση:{{shmeio.address}}</p>
+        <p>Τηλέφωνο:{{shmeio.phone}}</p>
+        <p>Ωράριο:{{shmeio.time_open}}</p>
+        <p>Υπεύθυνος:{{shmeio.senior}}</p>
+        <button (click)="change=1">Change</button>
+    </div>
+    <div *ngIf="change==1">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <input type="text" value="{{shmeio.name}}" placeholder="{{shmeio.name}}" ngModel name="name">
+            <input type="email" value="{{shmeio.email}}" placeholder="{{shmeio.email}}" ngModel name="email">
+            <input type="password"  value="{{shmeio.password}}" placeholder="{{shmeio.password}}" ngModel name="password1">
+            <input type="password" value="{{shmeio.password}}" placeholder="{{shmeio.password}}" ngModel name="password2">
+            <input type="text" value="{{shmeio.address}}" placeholder="{{shmeio.address}}" ngModel name="address">
+            <input type="tel" value="{{shmeio.phone}}" placeholder="{{shmeio.phone}}" ngModel name="tel">
+            <input type="text" value="{{shmeio.time_open}}" placeholder="{{shmeio.time_open}}" ngModel name="time_open">
+            <input type="text" value="{{shmeio.senior}}" placeholder="{{shmeio.senior}}" ngModel name="senior">
+            <button type="submit">Update</button>
+        </form>
+    </div>
 </div>
 <div *ngIf="page=='insert'">
     distribution insert
