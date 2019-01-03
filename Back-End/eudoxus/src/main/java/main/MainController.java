@@ -94,11 +94,9 @@ public class MainController {
 		newfoithths.setRunning_semester(running_semester);
 		newfoithths.setName(name);
 		newfoithths.setSurname(surname);
+		newfoithths.setDepartment(department);
+		newfoithths.setUniversity(university);
 		foiththsRepository.save(newfoithths);
-		university.addFoithths(newfoithths);
-		department.addFoithths(newfoithths);
-		departmentRepository.save(department);
-		universityRepository.save(university);
 		return true;
 	}
 	
@@ -202,14 +200,7 @@ public class MainController {
 		stk = new StringTokenizer(decoded,":");
 		String email=stk.nextToken();
 		Foithths foithths=foiththsRepository.findByEmail(email);
-		List<University> universities=universityRepository.findAll();
-		for(University univ: universities) {
-			for(Foithths foit:univ.getFoithtes()) {
-				if(foithths.getEmail().equals(foit.getEmail()))
-					return univ;
-			}
-		}
-		return null;
+		return foithths.getUniversity();
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, path="/get_department_details")
@@ -222,14 +213,7 @@ public class MainController {
 		stk = new StringTokenizer(decoded,":");
 		String email=stk.nextToken();
 		Foithths foithths=foiththsRepository.findByEmail(email);
-		List<Department> departments=departmentRepository.findAll();
-		for(Department dep: departments) {
-			for(Foithths foit:dep.getFoithtes()) {
-				if(foithths.getEmail().equals(foit.getEmail()))
-					return dep;
-			}
-		}
-		return null;
+		return foithths.getDepartment();
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT,path="/update_foithths") // Map ONLY GET Requests
@@ -322,6 +306,6 @@ public class MainController {
 		stk.nextToken();
 		String university_name=java.net.URLDecoder.decode(stk.nextToken(), "UTF-8");
 		University university=universityRepository.findByName(university_name);
-		return university.getDepartments();
+		return departmentRepository.findAllByUniversity(university);
 	}
 }

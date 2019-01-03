@@ -16,30 +16,10 @@ public class University {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 	private String name;
-	@OneToMany
-	private List<Department> departments;
-	@OneToMany
-	private List<Foithths> foithtes;
-	public University() {
-		departments=new ArrayList<Department>();
-		foithtes=new ArrayList<Foithths>();
-	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public List<Department> getDepartments() {
-		return departments;
-	}
-	public void addDepartments(Department department) {
-		this.departments.add(department);
-	}
-	public List<Foithths> getFoithtes() {
-		return foithtes;
-	}
-	public void addFoithths(Foithths foithths) {
-		this.foithtes.add(foithths);
 	}
 }

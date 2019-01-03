@@ -3,12 +3,11 @@ package main;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
-import main.Department;
+import main.Book;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 
-public interface DepartmentRepository extends CrudRepository<Department, Long>,JpaRepository<Department,Long> {
-	public Department findByName(String name);
-	public Iterable<Department> findAllByUniversity(University university);
+public interface BookRepository extends CrudRepository<Book, Long>,JpaRepository<Book,Long> {
+	public Book findByTitle(String title);
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -19,10 +20,12 @@ public class Department {
 	private String name;
 	@OneToOne
 	private Grammateia grammateia;
+	@ManyToOne
+	private University university;
 	@OneToMany
-	private List<Foithths> foithtes;
-	public Department() {
-		foithtes=new ArrayList<Foithths>();
+	private List<Lesson> lessons;
+	public Department(){
+		lessons=new ArrayList<Lesson>();
 	}
 	public String getName() {
 		return name;
@@ -36,10 +39,16 @@ public class Department {
 	public void setGrammateia(Grammateia grammateia) {
 		this.grammateia=grammateia;
 	}
-	public List<Foithths> getFoithtes() {
-		return foithtes;
+	public List<Lesson> getLessons() {
+		return lessons;
 	}
-	public void addFoithths(Foithths foithths) {
-		this.foithtes.add(foithths);
+	public void addLesson(Lesson lesson) {
+		this.lessons.add(lesson);
+	}
+	public University getUniversity() {
+		return university;
+	}
+	public void setUniversity(University university) {
+		this.university = university;
 	}
 }

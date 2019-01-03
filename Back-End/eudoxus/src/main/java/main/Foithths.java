@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,6 +24,10 @@ public class Foithths {
 	private String phone;
 	private int running_semester;
 	private int num_of_previous_books;
+	@ManyToOne
+	private University university;
+	@ManyToOne
+	private Department department;
 	public int getAM() {
 		return AM;
 	}
@@ -71,4 +76,17 @@ public class Foithths {
 	public void setNum_of_previous_books(int num_of_previous_books) {
 		this.num_of_previous_books = num_of_previous_books;
 	}
+	public University getUniversity() {
+		return university;
+	}
+	public void setUniversity(University university) {
+		this.university = university;
+	}
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
 }
