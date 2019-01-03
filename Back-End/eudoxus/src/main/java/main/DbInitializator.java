@@ -17,11 +17,13 @@ public class DbInitializator implements CommandLineRunner {
 	private DepartmentRepository departmentRepository;
 	private EkdothsRepository ekdothsRepository;
 	private BookRepository bookRepository;
-    public DbInitializator(UniversityRepository universityRepository,DepartmentRepository departmentRepository,EkdothsRepository ekdothsRepository,BookRepository bookRepository){
+	private LessonRepository lessonRepository;
+    public DbInitializator(LessonRepository lessonRepository,UniversityRepository universityRepository,DepartmentRepository departmentRepository,EkdothsRepository ekdothsRepository,BookRepository bookRepository){
         this.universityRepository = universityRepository;
         this.departmentRepository = departmentRepository;
         this.ekdothsRepository=ekdothsRepository;
         this.bookRepository=bookRepository;
+        this.lessonRepository=lessonRepository;
     }
     @Override
     public void run(String... strings) throws Exception {
@@ -104,6 +106,121 @@ public class DbInitializator implements CommandLineRunner {
     	book10.setWriters("Nick Tsiougkranas,Alexandros Niarchos");
     	book10.setEkdoths(ekdoths);
     	bookRepository.save(book10);
+    	Book book11=new Book();
+    	book11.setDate(2003);
+    	book11.setISBN("1231332-122421124-123134");
+    	book11.setTitle("Υπολογιστικα Συστηματα βασεις");
+    	book11.setWriters("Nick Tsiougkranas,Alexandros Niarchos");
+    	book11.setEkdoths(ekdoths);
+    	bookRepository.save(book11);
+    	Book book12=new Book();
+    	book12.setDate(2003);
+    	book12.setISBN("1231332-1224124-123134");
+    	book12.setTitle("Υπολογιστικα Συστηματα δεδομενα");
+    	book12.setWriters("Nick Tsiougkranas,Alexandros Niarchos");
+    	book12.setEkdoths(ekdoths);
+    	bookRepository.save(book12);
+    	Book book13=new Book();
+    	book13.setDate(2003);
+    	book13.setISBN("1231332-12241214-123134");
+    	book13.setTitle("Project threads");
+    	book13.setWriters("Nick Tsiougkranas,Alexandros Niarchos");
+    	book13.setEkdoths(ekdoths);
+    	bookRepository.save(book13);
+    	Book book14=new Book();
+    	book14.setDate(2003);
+    	book14.setISBN("1231332-12246124-12321134");
+    	book14.setTitle("Project buckets");
+    	book14.setWriters("Nick Tsiougkranas,Alexandros Niarchos");
+    	book14.setEkdoths(ekdoths);
+    	bookRepository.save(book14);
+    	Book book15=new Book();
+    	book15.setDate(2003);
+    	book15.setISBN("123111332-12241214-123134");
+    	book15.setTitle("Θεωρία Υπολογισμού turing");
+    	book15.setWriters("Nick Tsiougkranas,Alexandros Niarchos");
+    	book15.setEkdoths(ekdoths);
+    	bookRepository.save(book15);
+    	Book book16=new Book();
+    	book16.setDate(2003);
+    	book16.setISBN("123121332-12246124-12321134");
+    	book16.setTitle("Θεωρία Υπολογισμού pru");
+    	book16.setWriters("Nick Tsiougkranas,Alexandros Niarchos");
+    	book16.setEkdoths(ekdoths);
+    	bookRepository.save(book16);
+    	
+    	Lesson lesson1=new Lesson();
+    	lesson1.setInstructor("Τσαγλατίδου");
+    	lesson1.setName("Εισαγωγή Στην Πληροφορικη και τις Τηλεποικινωνίες");
+    	lesson1.setSeason("Χειμερινό");
+    	lesson1.setSemester(1);
+    	lesson1.addBooks(book1);
+    	lesson1.addBooks(book2);
+    	lessonRepository.save(lesson1);
+    	
+    	Lesson lesson2=new Lesson();
+    	lesson2.setInstructor("Δελής");
+    	lesson2.setName("Προγραμματισμός Συστήματος");
+    	lesson2.setSeason("Χειμερινό");
+    	lesson2.setSemester(1);
+    	lesson2.addBooks(book3);
+    	lesson2.addBooks(book4);
+    	lessonRepository.save(lesson2);
+    	
+    	Lesson lesson3=new Lesson();
+    	lesson3.setInstructor("Σταματόπουλός");
+    	lesson3.setName("Τεχνητή Νοημοσύνη");
+    	lesson3.setSeason("Χειμερινό");
+    	lesson3.setSemester(3);
+    	lesson3.addBooks(book5);
+    	lesson3.addBooks(book6);
+    	lessonRepository.save(lesson3);
+    	
+    	Lesson lesson4=new Lesson();
+    	lesson4.setInstructor("Ρουσσου");
+    	lesson4.setName("ΕΑΜ");
+    	lesson4.setSeason("Χειμερινό");
+    	lesson4.setSemester(3);
+    	lesson4.addBooks(book7);
+    	lesson4.addBooks(book8);
+    	lessonRepository.save(lesson4);
+    	
+    	Lesson lesson5=new Lesson();
+    	lesson5.setInstructor("Πασχαλης");
+    	lesson5.setName("Αρχιτεκτονική Υπολογιστών");
+    	lesson5.setSeason("Χειμερινό");
+    	lesson5.setSemester(7);
+    	lesson5.addBooks(book9);
+    	lesson5.addBooks(book10);
+    	lessonRepository.save(lesson5);
+    	
+    	Lesson lesson6=new Lesson();
+    	lesson6.setInstructor("Ιωαννίδης");
+    	lesson6.setName("Υπολογιστικά Συστήματα");
+    	lesson6.setSeason("Χειμερινό");
+    	lesson6.setSemester(7);
+    	lesson6.addBooks(book11);
+    	lesson6.addBooks(book12);
+    	lessonRepository.save(lesson6);
+    	
+    	Lesson lesson7=new Lesson();
+    	lesson7.setInstructor("Ιωαννίδης");
+    	lesson7.setName("Project");
+    	lesson7.setSeason("Χειμερινό");
+    	lesson7.setSemester(5);
+    	lesson7.addBooks(book13);
+    	lesson7.addBooks(book14);
+    	lessonRepository.save(lesson7);
+    	
+    	Lesson lesson8=new Lesson();
+    	lesson8.setInstructor("Ροντογιαννης");
+    	lesson8.setName("Θεωρία Υπολογισμού");
+    	lesson8.setSeason("Χειμερινό");
+    	lesson8.setSemester(5);
+    	lesson8.addBooks(book15);
+    	lesson8.addBooks(book16);
+    	lessonRepository.save(lesson8);
+    	
     	
     	University newUnivesity1=new University();
 		University newUnivesity2=new University();
@@ -123,6 +240,14 @@ public class DbInitializator implements CommandLineRunner {
 		department2.setUniversity(newUnivesity1);
 		department3.setUniversity(newUnivesity2);
 		department4.setUniversity(newUnivesity2);
+		department1.addLesson(lesson1);
+		department1.addLesson(lesson2);
+		department1.addLesson(lesson3);
+		department1.addLesson(lesson4);
+		department1.addLesson(lesson5);
+		department1.addLesson(lesson6);
+		department1.addLesson(lesson7);
+		department1.addLesson(lesson8);
 		departmentRepository.save(department1);
 		departmentRepository.save(department2);
 		departmentRepository.save(department3);
