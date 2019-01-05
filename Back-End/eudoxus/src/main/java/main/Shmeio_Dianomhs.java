@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,6 +24,11 @@ public class Shmeio_Dianomhs {
 	private String phone;
 	private String time_open;
 	private String senior;
+	@ManyToMany
+	public List<Book> books;
+	public Shmeio_Dianomhs() {
+		books=new ArrayList<Book>();
+	}
 	public String getName() {
 		return name;
 	}
@@ -70,5 +76,11 @@ public class Shmeio_Dianomhs {
 	}
 	public void setSenior(String senior) {
 		this.senior = senior;
+	}
+	public void addBook(Book book) {
+		this.books.add(book);
+	}
+	public List<Book> getBooks(){
+		return books;
 	}
 }

@@ -28,6 +28,10 @@ public class Foithths {
 	private University university;
 	@ManyToOne
 	private Department department;
+	@OneToMany 
+	private List<Lesson> lessons_taken;
+	@OneToMany 
+	private List<Book> books_taken;
 	public int getAM() {
 		return AM;
 	}

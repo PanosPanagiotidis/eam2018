@@ -308,4 +308,6 @@ public class MainController {
 		University university=universityRepository.findByName(university_name);
 		return departmentRepository.findAllByUniversity(university);
 	}
+
+	
 }
