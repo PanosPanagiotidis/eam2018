@@ -19,13 +19,15 @@ public class DbInitializator implements CommandLineRunner {
 	private BookRepository bookRepository;
 	private LessonRepository lessonRepository;
 	private Shmeio_DianomhsRepository shmeio_DianomhsRepository;
-    public DbInitializator(Shmeio_DianomhsRepository shmeio_DianomhsRepository,LessonRepository lessonRepository,UniversityRepository universityRepository,DepartmentRepository departmentRepository,EkdothsRepository ekdothsRepository,BookRepository bookRepository){
+	private FoiththsRepository foiththsRepository;
+    public DbInitializator(FoiththsRepository foiththsRepository,Shmeio_DianomhsRepository shmeio_DianomhsRepository,LessonRepository lessonRepository,UniversityRepository universityRepository,DepartmentRepository departmentRepository,EkdothsRepository ekdothsRepository,BookRepository bookRepository){
         this.universityRepository = universityRepository;
         this.departmentRepository = departmentRepository;
         this.ekdothsRepository=ekdothsRepository;
         this.bookRepository=bookRepository;
         this.lessonRepository=lessonRepository;
         this.shmeio_DianomhsRepository=shmeio_DianomhsRepository;
+        this.foiththsRepository=foiththsRepository;
     }
     @Override
     public void run(String... strings) throws Exception {
@@ -323,6 +325,23 @@ public class DbInitializator implements CommandLineRunner {
 		departmentRepository.save(department2);
 		departmentRepository.save(department3);
 		departmentRepository.save(department4);
+		
+		Foithths foithths=new Foithths();
+		foithths.setAM(201500166);
+		foithths.setDepartment(department1);
+		foithths.setEmail("nikosp1339@gmail.com");
+		foithths.setName("Nikos");
+		foithths.setNum_of_previous_books(0);
+		foithths.setPassword("123");
+		foithths.setPhone("6983302144");
+		foithths.setRunning_semester(7);
+		foithths.setSurname("Tsiougkranas");
+		foithths.setUniversity(newUnivesity1);
+		foithths.addBook(book1);
+		foithths.addLesson(lesson1);
+		foithths.addBook(book6);
+		foithths.addLesson(lesson3);
+		foiththsRepository.save(foithths);
 		
     }
 }

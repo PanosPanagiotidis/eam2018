@@ -1,5 +1,7 @@
 package main;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +21,15 @@ public class Book {
 	public String ISBN;
 	public String writers;
 	public int date;
+	public String image;
 	@ManyToOne
 	public Ekdoths ekdoths;
 	@ManyToMany
 	public List<Shmeio_Dianomhs> shmeia_Dianomhs;
-	public Book() {
+	public Book() throws IOException {
 		shmeia_Dianomhs=new ArrayList<Shmeio_Dianomhs>();
+		String path=(new File(".").getCanonicalPath() + "\\book.png");
+		this.setImage(path);
 	}
 	public String getTitle() {
 		return title;
@@ -37,6 +42,12 @@ public class Book {
 	}
 	public void setISBN(String ISBN) {
 		this.ISBN = ISBN;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public String getWriters() {
 		return writers;

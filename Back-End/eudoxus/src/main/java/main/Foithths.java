@@ -32,6 +32,10 @@ public class Foithths {
 	private List<Lesson> lessons_taken;
 	@OneToMany 
 	private List<Book> books_taken;
+	public Foithths() {
+		books_taken=new ArrayList<Book>();
+		lessons_taken=new ArrayList<Lesson>();
+	}
 	public int getAM() {
 		return AM;
 	}
@@ -92,5 +96,16 @@ public class Foithths {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-	
+	public void addBook(Book book) {
+		this.books_taken.add(book);
+	}
+	public List<Book> getBooks_taken(){
+		return books_taken;
+	}
+	public void addLesson(Lesson lesson) {
+		this.lessons_taken.add(lesson);
+	}
+	public List<Lesson> getLessons_taken(){
+		return lessons_taken;
+	}
 }

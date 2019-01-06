@@ -19,6 +19,8 @@ export class StudentsComponent implements OnInit {
   user: any;
   university: any;
   department: any;
+  booksofthisseason: any[]=[];
+  historyoforders: any[]=[];
   ngOnInit() {
     this.page=this.route.snapshot.paramMap.get('type');
     if(this.page=='details'){
@@ -37,6 +39,20 @@ export class StudentsComponent implements OnInit {
           this.department=res;
           }
       );
+    }
+    if(this.page=='declaration'){
+      this.studentSer.getseasonbooks().subscribe(
+        (res:any[])=>{
+          this.booksofthisseason=res;
+        }
+      )
+    }
+    if(this.page=='history'){
+      this.studentSer.gethistory().subscribe(
+        (res:any[])=>{
+          this.historyoforders=res;
+        }
+      )
     }
   }
 
