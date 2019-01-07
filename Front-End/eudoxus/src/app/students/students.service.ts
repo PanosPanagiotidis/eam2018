@@ -53,4 +53,28 @@ export class StudentsService {
     };
     return this.http.put<Boolean>(h.host+'/update_foithths',name+':'+surname+':'+tel+':'+newemail,httpOptions); 
   }
+
+  getseasonbooks(){
+    var email=this.sessionSt.retrieve('email');
+    var password=this.sessionSt.retrieve('password');
+    const httpOptions={
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + btoa(email+':'+password)
+      }),
+    };
+    return this.http.get<any[]>(h.host+'/getseasonbooks',httpOptions); 
+  }
+
+  gethistory(){
+    var email=this.sessionSt.retrieve('email');
+    var password=this.sessionSt.retrieve('password');
+    const httpOptions={
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + btoa(email+':'+password)
+      }),
+    };
+    return this.http.get<any[]>(h.host+'/gethistory',httpOptions); 
+  }
 }

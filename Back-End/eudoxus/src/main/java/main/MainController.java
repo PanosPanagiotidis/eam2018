@@ -309,5 +309,51 @@ public class MainController {
 		return departmentRepository.findAllByUniversity(university);
 	}
 
+	@RequestMapping(method=RequestMethod.GET, path="/getseason")
+	public @ResponseBody Iterable<Lesson> getseasonbooks(@RequestHeader("Authorization") String encoded) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		if(!foithths.getPassword().equals(password))
+			return null;
+		List<Lesson> returnlessons=new ArrayList<Lesson>();
+		int flag;
+		for(Lesson lesson: foithths.getDepartment().getLessons()) {
+			flag=1;
+			for(Lesson lesson2: foithths.getLessons_taken()) {
+				if(!lesson.getName().equals(lesson2.getName())){
+					flag=0;
+					break;
+				}
+			}
+			if(flag==1)
+				returnlessons.add(lesson);
+		}
+		return returnlessons;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/gethistory")
+	public @ResponseBody Iterable<Book> gethistorybooks(@RequestHeader("Authorization") String encoded) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		if(!foithths.getPassword().equals(password))
+			return null;
+		List<Book> returnbooks=new ArrayList<Book>();
+		returnbooks=foithths.getBooks_taken();
+		return returnbooks;
+	}
 	
 }
