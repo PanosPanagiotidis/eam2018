@@ -1,11 +1,190 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Eudoxus</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-  </head>
-  <body>
-<router-outlet></router-outlet>
-</body>
+    <head>
+        <title>Eudoxus</title>
+        <meta charset="utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" routerLink="home">Εύδοξος</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="home">Αρχική</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Φοιτητές
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="students/declaration">Δήλωση Συγγραμμάτων</a>
+                            <a class="dropdown-item" href="students/exchange">Ανταλλαγή Συγγραμμάτων</a>
+                            <a class="dropdown-item" href="students/history">Ιστορικό Δηλώσεων</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Σημεία Διανομής
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="distributions/details">Παράδοση Βιβλίων</a>
+                            <a class="dropdown-item" href="#">Εμφάνιση Βιβλίων</a>
+                            <a class="dropdown-item" href="#">Εισαγωγή Βιβλίου</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Εκδότες
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Διαχείριση Συγγαμμάτων</a>
+                            <a class="dropdown-item" href="#">Εισαγωγή Νέου Βιβλίου</a>
+                            <a class="dropdown-item" href="#">Αλλαγή Στοιχείων Βιβλίου</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Γραμματείες
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Διαχείριση Μαθημάτων</a>
+                            <a class="dropdown-item" href="#">Εισαγωγή Μαθήματος</a>
+                            <a class="dropdown-item" href="#">Αλλαγή Μαθήματος</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Διαθέτες Δωρεάν Υλικού
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Εισαγωγή Σημείωσης</a>
+                            <a class="dropdown-item" href="#">Αλλαγή Σημείωσης</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Βιβλιοθήκες
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Αναζήτηση Βιβλίων</a>
+                            <a class="dropdown-item" href="#">Παραγγελίες Βιβλίων</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav float-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-gr"> </span> Ελληνικά</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown09">
+                            <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-us"> </span>  English</a>
+                            <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-fr"> </span>  French</a>
+                            <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-it"> </span>  Italian</a>
+                            <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-ru"> </span>  Russian</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Αναζήτηση" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0 mr-1" type="submit">
+                        <i class="material-icons">
+                            search
+                        </i>
+                    </button>
+                </form>
+                <!-- <i class="material-icons large">
+                    account_circle
+                </i>
+                <h5>
+                    <small>
+                        <a href="/login">Είδοδος/Εγγραφή</a>
+                    </small>
+                </h5> -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons large">
+                            account_circle
+                        </i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/login">Είσοδος</a>
+                        <a class="dropdown-item" href="/signup">Εγγραφή</a>
+                        <a class="dropdown-item" href="/logout">Αποσύνδεση</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <router-outlet></router-outlet>
+    </body>
+        
+    <footer class="page-footer fixed-bottom font-small blue pt-4 border">
+
+            <!-- Footer Links -->
+            <div class="container-fluid text-center text-md-left">
+        
+              <!-- Grid row -->
+              <div class="row">
+        
+                <!-- Grid column -->
+                <div class="col-1">
+        
+                  <!-- Content -->
+                  <h5 class="text-uppercase">ΣΧΕΤΙΚΑ</h5>
+        
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-2 mb-md-0 mb-3">
+        
+                    <ul class="list-unstyled">
+                      <li>
+                        <a href="#!">Τι είναι ο Εύδοξος;</a>
+                      </li>
+                      <li>
+                        <a href="#!">Πώς λειτουργεί;</a>
+                      </li>
+                      <li>
+                        <a href="#!">Επικοινωνία</a>
+                      </li>
+                    </ul>
+        
+                  </div>
+                  <!-- Grid column -->
+        
+                  <!-- Grid column -->
+                  <div class="col-2 mb-md-0 mb-3">
+        
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Συχνές Ερωτήσεις</a>
+                        </li>
+                        <li>
+                            <a href="#!">Όροι Χρήσης</a>
+                        </li>
+                    </ul>
+        
+                  </div>
+                  <!-- Grid column -->
+        
+              </div>
+              <!-- Grid row -->
+        
+            </div>
+            <!-- Footer Links -->
+        
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">
+                © 2019 Di@Uoa
+            </div>
+            <!-- Copyright -->
+        
+          </footer>
+          <!-- Footer -->
 </html>
