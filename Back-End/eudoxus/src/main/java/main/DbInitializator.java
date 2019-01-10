@@ -64,7 +64,7 @@ public class DbInitializator implements CommandLineRunner {
     	
     	Book book1=new Book();
     	book1.setDate(2001);
-    	book1.setISBN("1231-12412-12314");
+    	book1.setIsbn("1231-12412-12314");
     	book1.setTitle("Εισαγωγή στην Πληροφορικη");
     	book1.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book1.setEkdoths(ekdoths);
@@ -75,7 +75,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book1);
     	Book book2=new Book();
     	book2.setDate(2002);
-    	book2.setISBN("1231-12412-1231245");
+    	book2.setIsbn("1231-12412-1231245");
     	book2.setTitle("Εισαγωγή στις Τηλεποικινωνίες");
     	book2.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book2.setEkdoths(ekdoths);
@@ -84,7 +84,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book2);
     	Book book3=new Book();
     	book3.setDate(2003);
-    	book3.setISBN("123132-12412-12314");
+    	book3.setIsbn("123132-12412-12314");
     	book3.setTitle("Προγραμματισμος Συστήματος μνημη");
     	book3.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book3.setEkdoths(ekdoths);
@@ -93,7 +93,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book3);
     	Book book4=new Book();
     	book4.setDate(2004);
-    	book4.setISBN("12312-12412-12314");
+    	book4.setIsbn("12312-12412-12314");
     	book4.setTitle("Προγραμματισμος Συστήματος Σύστημα");
     	book4.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book4.setEkdoths(ekdoths);
@@ -104,7 +104,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book4);
     	Book book5=new Book();
     	book5.setDate(2003);
-    	book5.setISBN("123132-125312-12314");
+    	book5.setIsbn("123132-125312-12314");
     	book5.setTitle("Τεχνητη Νοημοσύνη Πακμαν");
     	book5.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book5.addShmeio_Dianomhs(shmeio_Dianomhs2);
@@ -113,7 +113,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book5);
     	Book book6=new Book();
     	book6.setDate(2003);
-    	book6.setISBN("123132-124212-12314");
+    	book6.setIsbn("123132-124212-12314");
     	book6.setTitle("Τεχνητη νοημοσύνη κοριντορ");
     	book6.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book6.setEkdoths(ekdoths);
@@ -122,7 +122,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book6);
     	Book book7=new Book();
     	book7.setDate(2003);
-    	book7.setISBN("1231732-12412-12314");
+    	book7.setIsbn("1231732-12412-12314");
     	book7.setTitle("ΕΑΜ ιστοσελίδες");
     	book7.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book7.setEkdoths(ekdoths);
@@ -133,7 +133,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book7);
     	Book book8=new Book();
     	book8.setDate(2003);
-    	book8.setISBN("1231132-12412-12314");
+    	book8.setIsbn("1231132-12412-12314");
     	book8.setTitle("ΕΑΜ εφαρμογες");
     	book8.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book8.setEkdoths(ekdoths);
@@ -142,7 +142,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book8);
     	Book book9=new Book();
     	book9.setDate(2003);
-    	book9.setISBN("123132-1224124-12314");
+    	book9.setIsbn("123132-1224124-12314");
     	book9.setTitle("Αρχιτεκτονικη μνημης");
     	book9.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book9.setEkdoths(ekdoths);
@@ -151,7 +151,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book9);
     	Book book10=new Book();
     	book10.setDate(2003);
-    	book10.setISBN("123132-1224124-123134");
+    	book10.setIsbn("123132-1224124-123134");
     	book10.setTitle("Αρχιτεκτονικη CPU");
     	book10.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book10.setEkdoths(ekdoths);
@@ -162,7 +162,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book10);
     	Book book11=new Book();
     	book11.setDate(2003);
-    	book11.setISBN("1231332-122421124-123134");
+    	book11.setIsbn("1231332-122421124-123134");
     	book11.setTitle("Υπολογιστικα Συστηματα βασεις");
     	book11.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book11.setEkdoths(ekdoths);
@@ -171,7 +171,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book11);
     	Book book12=new Book();
     	book12.setDate(2003);
-    	book12.setISBN("1231332-1224124-123134");
+    	book12.setIsbn("1231332-1224124-123134");
     	book12.setTitle("Υπολογιστικα Συστηματα δεδομενα");
     	book12.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book12.setEkdoths(ekdoths);
@@ -180,7 +180,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book12);
     	Book book13=new Book();
     	book13.setDate(2003);
-    	book13.setISBN("1231332-12241214-123134");
+    	book13.setIsbn("1231332-12241214-123134");
     	book13.setTitle("Project threads");
     	book13.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book13.setEkdoths(ekdoths);
@@ -191,7 +191,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book13);
     	Book book14=new Book();
     	book14.setDate(2003);
-    	book14.setISBN("1231332-12246124-12321134");
+    	book14.setIsbn("1231332-12246124-12321134");
     	book14.setTitle("Project buckets");
     	book14.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book14.setEkdoths(ekdoths);
@@ -200,7 +200,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book14);
     	Book book15=new Book();
     	book15.setDate(2003);
-    	book15.setISBN("123111332-12241214-123134");
+    	book15.setIsbn("123111332-12241214-123134");
     	book15.setTitle("Θεωρία Υπολογισμού turing");
     	book15.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book15.setEkdoths(ekdoths);
@@ -209,7 +209,7 @@ public class DbInitializator implements CommandLineRunner {
     	bookRepository.save(book15);
     	Book book16=new Book();
     	book16.setDate(2003);
-    	book16.setISBN("123121332-12246124-12321134");
+    	book16.setIsbn("123121332-12246124-12321134");
     	book16.setTitle("Θεωρία Υπολογισμού pru");
     	book16.setWriters("Nikos Tsiougkranas,Alexandros Niarchos,Panos Panagiotidhs");
     	book16.setEkdoths(ekdoths);
