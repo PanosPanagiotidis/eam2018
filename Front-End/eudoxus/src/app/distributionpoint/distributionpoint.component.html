@@ -10,7 +10,7 @@
         <button (click)="change=1">Change</button>
     </div>
     <div *ngIf="change==1">
-        <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <form (ngSubmit)="onSubmitchange()" #f="ngForm">
             <input type="text" value="{{shmeio.name}}" placeholder="{{shmeio.name}}" ngModel name="name">
             <input type="email" value="{{shmeio.email}}" placeholder="{{shmeio.email}}" ngModel name="email">
             <input type="password"  value="{{shmeio.password}}" placeholder="{{shmeio.password}}" ngModel name="password1">
@@ -23,12 +23,24 @@
         </form>
     </div>
 </div>
-<div *ngIf="page=='insert'">
-    distribution insert
+<div *ngIf="page=='search'">
+    <form (ngSubmit)="onSubmitsearch()" #s="ngForm">
+        <input type="text" placeholder="Αναζήτηση βάση τίτλου,συγγραφέα,ISBN" ngModel name="name">
+        <button type="submit">search</button>
+    </form>
+</div>
+<div *ngIf="page=='searchresults'">
+    <!-- search results select through them-->
+</div>
+<div *ngIf="page=='allbooks'">
+    <!-- allbooks -->
 </div>
 <div *ngIf="page=='delivery'">
-    distribution delivery
+    <form (ngSubmit)="onSubmitdelivery()" #d="ngForm">
+        <input type="text" placeholder="PIN" ngModel name="pin">
+        <button type="submit">Submit</button>
+    </form>
 </div>
-<div *ngIf="page=='afterdelivery'">
-    distribution afterdelivery
+<div *ngIf="page=='deliverybooks'">
+    <!-- books of the declaration of the student here -->
 </div>

@@ -10,4 +10,7 @@ import main.Book;
 
 public interface BookRepository extends CrudRepository<Book, Long>,JpaRepository<Book,Long> {
 	public Book findByTitle(String title);
+	public Book findByISBN(String isbn);
+	public Iterable<Book> findByWriters(String writers);
+	
 }

@@ -12,7 +12,7 @@
         <button (click)="change=1">Change</button>
     </div>
     <div *ngIf="change==1">
-        <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <form (ngSubmit)="onSubmitdetails()" #f="ngForm">
             <input type="email" value="{{user.email}}" placeholder="{{user.email}}" ngModel name="email"/>
             <input type="password"  value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password1"/>
             <input type="password" value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password2"/>
@@ -33,5 +33,5 @@
     student exhange
 </div>
 <div *ngIf="page=='history'">
-    student history
+    student history done
 </div>

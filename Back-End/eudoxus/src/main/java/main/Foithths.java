@@ -24,6 +24,7 @@ public class Foithths {
 	private String phone;
 	private int running_semester;
 	private int num_of_previous_books;
+	private String pin;
 	@ManyToOne
 	private University university;
 	@ManyToOne
@@ -32,8 +33,14 @@ public class Foithths {
 	private List<Lesson> lessons_taken;
 	@OneToMany 
 	private List<Book> books_taken;
+	@OneToMany 
+	private List<Book> books_declared;
+	@OneToMany 
+	private List<Book> books_exhanged;
 	public Foithths() {
 		books_taken=new ArrayList<Book>();
+		books_exhanged=new ArrayList<Book>();
+		books_declared=new ArrayList<Book>();
 		lessons_taken=new ArrayList<Lesson>();
 	}
 	public int getAM() {
@@ -102,10 +109,31 @@ public class Foithths {
 	public List<Book> getBooks_taken(){
 		return books_taken;
 	}
+	public void addBook_declared(Book book) {
+		this.books_declared.add(book);
+	}
+	public void removeBook_declared(Book book) {
+		this.books_declared.remove(book);
+	}
+	public List<Book> getBooks_declared(){
+		return books_declared;
+	}
+	public void addBook_exhange(Book book) {
+		this.books_exhanged.add(book);
+	}
+	public List<Book> getBooks_exhanged(){
+		return books_exhanged;
+	}
 	public void addLesson(Lesson lesson) {
 		this.lessons_taken.add(lesson);
 	}
 	public List<Lesson> getLessons_taken(){
 		return lessons_taken;
+	}
+	public String getPin() {
+		return pin;
+	}
+	public void setPin(String pin) {
+		this.pin = pin;
 	}
 }

@@ -13,6 +13,7 @@ import { SessionStorageService } from 'ngx-webstorage';
 export class StudentsComponent implements OnInit {
 
   @ViewChild('f') registrationForm: NgForm;
+  @ViewChild('f') exhangeForm: NgForm;
   constructor(private sessionSt:SessionStorageService,private studentSer:StudentsService, private router:Router,private route: ActivatedRoute) { }
   page='';
   change=0;
@@ -21,6 +22,7 @@ export class StudentsComponent implements OnInit {
   department: any;
   booksofthisseason: any[]=[];
   historyoforders: any[]=[];
+  exhangebooks: any[]=[];
   ngOnInit() {
     this.page=this.route.snapshot.paramMap.get('type');
     if(this.page=='details'){
@@ -54,9 +56,16 @@ export class StudentsComponent implements OnInit {
         }
       )
     }
+    if(this.page=='exhange'){
+      this.studentSer.getavailablebooksforexhange().subscribe(
+        (res:any[])=>{
+          this.exhangebooks=res;
+        }
+      )
+    }
   }
 
-  onSubmit(){
+  onSubmitdetails(){
     if(this.registrationForm.value.password1!=this.registrationForm.value.password2){
       window.alert("Ξαναγράψτε τον κωδικό");
       return;
@@ -82,5 +91,13 @@ export class StudentsComponent implements OnInit {
         else
           window.alert("User with same email already exists!");
       });
+  }
+  onSubmitexhange(){
+    this.studentSer.exhangebooks(this.exhangeForm.value.name).subscribe(
+      res=>{
+        if(res==true)
+          this.router.navigateByUrl('/home', {skipLocationChange: true}).then(()=>this.router.navigate(["students/details"])); 
+      }
+    )
   }
 }

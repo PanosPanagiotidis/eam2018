@@ -10,4 +10,5 @@ import main.Foithths;
 
 public interface FoiththsRepository extends CrudRepository<Foithths, Long>,JpaRepository<Foithths,Long> {
 	public Foithths findByEmail(String email);
+	public Foithths findByPin(String pin);
 }

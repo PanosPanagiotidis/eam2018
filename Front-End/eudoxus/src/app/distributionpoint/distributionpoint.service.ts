@@ -31,4 +31,48 @@ export class DistributionpointService {
     };
     return this.http.put<Boolean>(h.host+'/update_shmeio',name+':'+tel+':'+newemail+':'+address+':'+time_open+':'+senior,httpOptions); 
   }
+  searchbooks(variable){
+    var email=this.sessionSt.retrieve('email');
+    var password=this.sessionSt.retrieve('password');
+    const httpOptions={
+      headers: new HttpHeaders({
+        // 'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + btoa(email+':'+password)
+      }),
+    };
+    return this.http.put<any[]>(h.host+'/searchbooks',variable,httpOptions); 
+  }
+  insertbooks(arrayofisbn){
+    var email=this.sessionSt.retrieve('email');
+    var password=this.sessionSt.retrieve('password');
+    const httpOptions={
+      headers: new HttpHeaders({
+        // 'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + btoa(email+':'+password)
+      }),
+    };
+    return this.http.put<Boolean>(h.host+'/insertbooks',arrayofisbn,httpOptions); 
+  }
+  delivery(pin){
+    var email=this.sessionSt.retrieve('email');
+    var password=this.sessionSt.retrieve('password');
+    const httpOptions={
+      headers: new HttpHeaders({
+        // 'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + btoa(email+':'+password)
+      }),
+    };
+    return this.http.put<any[]>(h.host+'/delivery',pin,httpOptions); 
+  }
+  getallbooks(){
+    var email=this.sessionSt.retrieve('email');
+    var password=this.sessionSt.retrieve('password');
+    const httpOptions={
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Basic ' + btoa(email+':'+password)
+      }),
+    };
+    return this.http.get<any[]>(h.host+'/getallbooks',httpOptions); 
+  }
 }
