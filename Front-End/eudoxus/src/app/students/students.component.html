@@ -1,86 +1,131 @@
-<div *ngIf="page=='details'">
-    <div *ngIf="change==0"> 
-        <p>Πανεπιστήμιο:{{university.name}}</p>
-        <p>Τμήμα:{{department.name}}</p>
-        <p>email:{{user.email}}</p>
-        <p>Όνομα:{{user.name}}</p>
-        <p>Επίθετο:{{user.surname}}</p>
-        <p>ΑΜ:{{user.am}}</p>
-        <p>Τηλέφωνο:{{user.phone}}</p>
-        <p>Τρέχων Εξάμηνο:{{user.running_semester}}</p>
-        <p>Αριθμός βιβλίων πρίν το σύστημα έυδοξος:{{user.num_of_previous_books}}</p>
-        <button (click)="change=1">Change</button>
-    </div>
-    <div *ngIf="change==1">
-        <form (ngSubmit)="onSubmit()" #f="ngForm">
-            <input type="email" value="{{user.email}}" placeholder="{{user.email}}" ngModel name="email"/>
-            <input type="password"  value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password1"/>
-            <input type="password" value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password2"/>
-            <input type="text" value="{{user.name}}" placeholder="{{user.name}}" ngModel name="name"/>
-            <input type="text" value="{{user.surname}}" placeholder="{{user.surname}}" ngModel name="surname"/>
-            <input type="tel" value="{{user.phone}}" placeholder="{{user.phone}}" ngModel name="tel"/>
-            <button type="submit">Update</button>
-        </form>
-    </div>
-</div>
 <div *ngIf="page=='declaration'">
-    <div id="accordion" class="mx-auto w-50 mt-5">
-        <h3>Δήλωση Συγγραμμάτων</h3>
-        <div class="card">
-            <div class="card-header p-0" id="headingOne">
-            <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Εξάμηνο 1ο
-                </button>
-            </h5>
-            </div>
+        <div id="accordion" class="mx-auto w-50 mt-5">
         
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-                ΕΠΙΚΟΙΝΩΝΙΑ ΑΝΘΡΩΠΟΥ ΜΗΧΑΝΗΣ
-                <div class="form-group">
-                    <select class="form-control w-50" id="sel1">
-                        <option>Επιλέξτε σύγγραμμα</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </div>   
-            </div>
-            </div>
+                <h3>Δήλωση Συγγραμμάτων</h3>
+                <div class="card">
+                    <div class="card-header p-0" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                            Εξάμηνο 1ο
+                            </button>
+                        </h5>
+                    </div>
+                
+                    <div id="collapseOne1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            ΔΙΑΚΡΙΤΑ ΜΑΘΗΜΑΤΙΚΑ
+                            <div class="form-group">
+                                <select class="form-control w-50" id="sel1" [(ngModel)]="book1">
+                                    <option>Επιλέξτε σύγγραμμα</option>
+                                    <option>Διακριτά μαθηματικά και εφαρμογές τους</option>
+                                    <option>ΣΤΟΙΧΕΙΑ ΔΙΑΚΡΙΤΩΝ ΜΑΘΗΜΑΤΙΚΩΝ</option>
+                                </select>
+                            </div>   
+                        </div>
+                        <div class="card-body">
+                            ΕΙΣΑΓΩΓΗ ΣΤΟΝ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟ
+                            <div class="form-group">
+                                <select class="form-control w-50" id="sel1" [(ngModel)]="book2">
+                                    <option>Επιλέξτε σύγγραμμα</option>
+                                    <option>C: Από τη Θεωρία στην Εφαρμογή</option>
+                                    <option>Η ΓΛΩΣΣΑ C ΣΕ ΒΑΘΟΣ</option>
+                                    <option>Εισαγωγή στον Προγραμματισμό με την C</option>
+                                </select>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                        <div class="card-header p-0" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                            Εξάμηνο 3ο
+                            </button>
+                        </h5>
+                        </div>
+                    
+                        <div id="collapseOne2" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                ΑΝΤΙΚΕΙΜΕΝΟΣΤΡΑΦΗΣ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΣ
+                                <div class="form-group">
+                                    <select class="form-control w-50" id="sel1" [(ngModel)]="book3">
+                                        <option>Επιλέξτε σύγγραμμα</option>
+                                        <option>Τρόπος Σκέψης σε C++</option>
+                                        <option>Η ΓΛΩΣΣΑ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟΥ C++</option>
+                                    </select>
+                                </div>   
+                            </div>
+                            <div class="card-body">
+                                ΠΙΘΑΝΟΤΗΤΕΣ ΚΑΙ ΣΤΟΙΧΕΙΑ ΣΤΑΤΙΣΤΙΚΗΣ
+                                <div class="form-group">
+                                    <select class="form-control w-50" id="sel1" [(ngModel)]="book4">
+                                        <option>Επιλέξτε σύγγραμμα</option>
+                                        <option>Εισαγωγή στις Πιθανότητες και τη Στατιστική</option>
+                                        <option>ΕΙΣΑΓΩΓΗ ΣΤΗ ΘΕΩΡΙΑ ΠΙΘΑΝΟΤΗΤΩΝ</option>
+                                    </select>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header p-0" id="headingOne3">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                            Εξάμηνο 5ο
+                            </button>
+                        </h5>
+                        </div>
+                    
+                        <div id="collapseOne3" class="collapse" aria-labelledby="headingOne3" data-parent="#accordion">
+                            <div class="card-body">
+                                ΛΕΙΤΟΥΡΓΙΚΑ ΣΥΣΤΗΜΑΤΑ
+                                <div class="form-group">
+                                    <select class="form-control w-50" id="sel1" [(ngModel)]="book5">
+                                        <option>Επιλέξτε σύγγραμμα</option>
+                                        <option>Λειτουργικά Συστήματα 9η Εκδ.</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </div>   
+                            </div>
+                            <div class="card-body">
+                                ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ
+                                <div class="form-group">
+                                    <select class="form-control w-50" id="sel1" [(ngModel)]="book6">
+                                        <option>Επιλέξτε σύγγραμμα</option>
+                                        <option>ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ</option>
+                                        <option>ΤΕΧΝΗΤΗ ΝΟΗΜΟΣΥΝΗ: ΜΙΑ ΣΥΓΧΡΟΝΗ ΠΡΟΣΕΓΓΙΣΗ</option>
+                                    </select>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header p-0" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4">
+                            Εξάμηνο 7ο
+                            </button>
+                        </h5>
+                        </div>
+                    
+                        <div id="collapseOne4" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            ΕΠΙΚΟΙΝΩΝΙΑ ΑΝΘΡΩΠΟΥ ΜΗΧΑΝΗΣ
+                            <div class="form-group">
+                                <select class="form-control w-50" id="sel1" [(ngModel)]="book7">
+                                    <option>Επιλέξτε σύγγραμμα</option>
+                                    <option>ΕΙΣΑΓΩΓΗ ΣΤΗΝ ΑΛΛΗΛΕΠΙΔΡΑΣΗ ΑΝΘΡΩΠΟΥ-ΥΠΟΛΟΓΙΣΤΗ</option>
+                                    <option>Σχεδίαση Διεπαφής Χρήστη, 6η Εκδοση</option>
+                                </select>
+                            </div>   
+                        </div>
+                        </div>
+                    </div>
+                <button type="button" class="btn float-right mt-1" (click)="onDeclarationConfirm()">Επιβεβαίωση</button>
         </div>
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Collapsible Group Item #2
-                </button>
-            </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Collapsible Group Item #3
-                </button>
-            </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-            </div>
-        </div>
-        <button type="button" class="btn float-right mt-1" (click)="onDeclarationConfirm()">Επιβεβαίωση</button>
-    </div>
-        
 </div>
+
 <div *ngIf="page=='confirmation'">
     <div id="accordion" class="mx-auto w-50 mt-5">
         <h3>Επιβεβαίωση Δήλωσης</h3>
@@ -112,5 +157,5 @@
     student exchange
 </div>
 <div *ngIf="page=='history'">
-    student history
+    student history done
 </div>

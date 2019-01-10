@@ -59,6 +59,8 @@ public class MainController {
 	private UniversityRepository universityRepository;
 	@Autowired
 	private DepartmentRepository departmentRepository;
+	@Autowired
+	private BookRepository bookRepository;
 	
 
 	@RequestMapping(method=RequestMethod.PUT,path="/signup_foithths") // Map ONLY GET Requests
@@ -354,6 +356,223 @@ public class MainController {
 		List<Book> returnbooks=new ArrayList<Book>();
 		returnbooks=foithths.getBooks_taken();
 		return returnbooks;
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT, path="/searchbooks")
+	public @ResponseBody Iterable<Book> searchbooks(@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Shmeio_Dianomhs shmeio_Dianomhs=shmeio_DianomhsRepository.findByEmail(email);
+		if(!shmeio_Dianomhs.getPassword().equals(password))
+			return null;
+		List<Book> returnbooks=new ArrayList<Book>();
+		stk = new StringTokenizer(credentials,":");
+		String query=stk.nextToken();
+		Book book=bookRepository.findByTitle(query);
+		if(book!=null)
+		{
+			returnbooks.add(book);
+			return returnbooks;
+		}
+		book=bookRepository.findByISBN(query);
+		if(book!=null)
+		{
+			returnbooks.add(book);
+			return returnbooks;
+		}
+		return bookRepository.findByWriters(query);
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT, path="/insertbooks")
+	public @ResponseBody boolean insertbooks(@RequestHeader("Authorization") String encoded,@RequestBody String credentials) throws IOException {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Shmeio_Dianomhs shmeio_Dianomhs=shmeio_DianomhsRepository.findByEmail(email);
+		if(!shmeio_Dianomhs.getPassword().equals(password))
+			return false;
+		Book book=new Book();
+		stk = new StringTokenizer(credentials,":");
+		String isbn;
+		while(!(isbn=stk.nextToken()).equals("end")) {
+			book=bookRepository.findByISBN(isbn);
+			shmeio_Dianomhs.addBook(book);
+			shmeio_DianomhsRepository.save(shmeio_Dianomhs);
+			book.addShmeio_Dianomhs(shmeio_Dianomhs);
+			bookRepository.save(book);
+		}
+		return true;
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT, path="/delivery")
+	public @ResponseBody Iterable<Book> delivery(@RequestHeader("Authorization") String encoded,@RequestBody String credentials) throws IOException {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Shmeio_Dianomhs shmeio_Dianomhs=shmeio_DianomhsRepository.findByEmail(email);
+		if(!shmeio_Dianomhs.getPassword().equals(password))
+			return null;
+		stk = new StringTokenizer(credentials,":");
+		String pin=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByPin(pin);
+		List<Book> books_declared=foithths.getBooks_declared();
+		List<Book> returnBooks=new ArrayList<Book>();
+		for(Book book: books_declared) {
+			int flag=1;
+			for(Shmeio_Dianomhs shmeiodianomhs:book.getShmeia_Dianomhs()) {
+				if(shmeiodianomhs.getEmail().equals(shmeio_Dianomhs.getEmail())){
+					flag=0;
+					break;
+				}
+			}
+			if(flag==0) {
+				foithths.addBook(book);
+				foithths.removeBook_declared(book);
+				returnBooks.add(book);
+			}
+		}
+		foiththsRepository.save(foithths);
+		return returnBooks;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/getallbooks")
+	public @ResponseBody Iterable<Book> getallbooks(@RequestHeader("Authorization") String encoded) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Shmeio_Dianomhs shmeio_Dianomhs=shmeio_DianomhsRepository.findByEmail(email);
+		if(!shmeio_Dianomhs.getPassword().equals(password))
+			return null;
+		return shmeio_Dianomhs.getBooks();
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/getavailablebookstoexhange")
+	public @ResponseBody Iterable<Book> getavailablebookstoexhange(@RequestHeader("Authorization") String encoded) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		if(!foithths.getPassword().equals(password))
+			return null;
+		List<Book> returnbooks=new ArrayList<Book>();
+		for(Book book1: foithths.getBooks_taken()) {
+			int flag=1;
+			for(Book book2 :foithths.getBooks_exhanged()) {
+				if(book1.getISBN().equals(book2.getISBN())){
+					flag=0;
+					break;
+				}
+			}
+			if(flag==1)
+				returnbooks.add(book1);
+		}
+		return returnbooks;
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT, path="/exhangebooks")
+	public @ResponseBody boolean exhangebooks(@RequestHeader("Authorization") String encoded,@RequestBody String credentials) throws IOException {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		if(!foithths.getPassword().equals(password))
+			return false;
+		stk = new StringTokenizer(credentials,":");
+		String isbn;
+		Book book=new Book();
+		while(!(isbn=stk.nextToken()).equals("end")) {
+			book=bookRepository.findByISBN(isbn);
+			foithths.addBook_exhange(book);
+			foiththsRepository.save(foithths);
+		}
+		return true;
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT, path="/getexhangersforbook")
+	public @ResponseBody Iterable<Foithths> getexhangersforbook(@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		if(!foithths.getPassword().equals(password))
+			return null;
+		stk = new StringTokenizer(credentials,":");
+		String isbn=stk.nextToken();
+		List<Foithths> foithtes=foiththsRepository.findAll();
+		List<Foithths> returnfoithtes=new ArrayList<Foithths>();
+		for(Foithths tempfoithths: foithtes) {
+			int flag=1;
+			for(Book book:tempfoithths.getBooks_exhanged()) {
+				if(book.getISBN().equals(isbn)){
+					flag=0;
+					break;
+				}
+			}
+			if(flag==0)
+				returnfoithtes.add(tempfoithths);
+		}
+		return returnfoithtes;
+		
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT, path="/declareBooks")
+	public @ResponseBody void declareBooks(@RequestHeader("Authorization") String encoded,@RequestBody String books) throws IOException {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		if(!foithths.getPassword().equals(password))
+			return ;
+		stk = new StringTokenizer(books,":");
+		String token = stk.nextToken();
+		while(token!=null){
+			Book book = new Book();
+			book.setTitle(token);
+			foithths.addBook_declared(book);
+			token = stk.nextToken();
+		}
+		foiththsRepository.save(foithths);
 	}
 	
 }

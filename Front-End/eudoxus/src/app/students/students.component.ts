@@ -12,7 +12,8 @@ import { SessionStorageService } from 'ngx-webstorage';
 })
 export class StudentsComponent implements OnInit {
 
-  @ViewChild('f') registrationForm: NgForm;
+  @ViewChild('f') exhangeForm: NgForm;
+  @ViewChild('declaration') declarationForm: NgForm;
   constructor(private sessionSt:SessionStorageService,private studentSer:StudentsService, private router:Router,private route: ActivatedRoute) { }
   page='';
   change=0;
@@ -21,6 +22,15 @@ export class StudentsComponent implements OnInit {
   department: any;
   booksofthisseason: any[]=[];
   historyoforders: any[]=[];
+  exhangebooks: any[]=[];
+  book1: string;
+  book2: string;
+  book3: string;
+  book4: string;
+  book5: string;
+  book6: string;
+  book7: string;
+  book8: string;
   ngOnInit() {
     this.page=this.route.snapshot.paramMap.get('type');
     if(this.page=='details'){
@@ -54,35 +64,16 @@ export class StudentsComponent implements OnInit {
         }
       )
     }
+    if(this.page=='exhange'){
+      this.studentSer.getavailablebookstoexhange().subscribe(
+        (res:any[])=>{
+          this.exhangebooks=res;
+        }
+      )
+    }
   }
 
-  onSubmit(){
-    if(this.registrationForm.value.password1!=this.registrationForm.value.password2){
-      window.alert("Ξαναγράψτε τον κωδικό");
-      return;
-    }
-    if(this.registrationForm.value.name=='')
-      this.registrationForm.value.name=this.user.name;
-    if(this.registrationForm.value.surname=='')
-      this.registrationForm.value.surname=this.user.surname;
-    if(this.registrationForm.value.email=='')
-      this.registrationForm.value.email=this.user.email;
-    if(this.registrationForm.value.password1=='')
-      this.registrationForm.value.password1=this.user.password;
-    if(this.registrationForm.value.tel=='')
-      this.registrationForm.value.tel=this.user.phone;
-    this.studentSer.update_foithths(this.registrationForm.value.name,this.registrationForm.value.surname,this.user.email,this.registrationForm.value.email,this.registrationForm.value.password1,this.registrationForm.value.tel,).subscribe(
-      (res:any)=>{
-        if(res){
-          this.change=0;
-          this.sessionSt.store('email',this.registrationForm.value.email);
-          this.sessionSt.store('password',this.registrationForm.value.password);
-          this.router.navigateByUrl('/home', {skipLocationChange: true}).then(()=>this.router.navigate(["students/details"])); 
-        }
-        else
-          window.alert("User with same email already exists!");
-      });
-  }
+  
 
   onDeclarationConfirm(){
     var loginState = this.sessionSt.retrieve('loginState')
@@ -91,6 +82,22 @@ export class StudentsComponent implements OnInit {
     }
     else{
       this.page = "confirmation"
+      this.studentSer.declareBooks(this.book1,this.book2,this.book3,this.book4,this.book5,this.book6,this.book7,this.book8).subscribe()
     }
+  }
+
+  onSelectBook(bookId){
+    console
+    var books = []
+    books[bookId] = bookId
+  }
+
+  onSubmitexhange(){
+    this.studentSer.exhangebooks(this.exhangeForm.value.name).subscribe(
+      res=>{
+        if(res==true)
+          this.router.navigateByUrl('/home', {skipLocationChange: true}).then(()=>this.router.navigate(["students/details"])); 
+      }
+    )
   }
 }

@@ -12,6 +12,7 @@ import { HelpComponent } from './help/help.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DistributionpointComponent } from './distributionpoint/distributionpoint.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DistributionpointComponent } from './distributionpoint/distributionpoin
     HelpComponent,
     LoginComponent,
     SignupComponent,
-    DistributionpointComponent
+    DistributionpointComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
