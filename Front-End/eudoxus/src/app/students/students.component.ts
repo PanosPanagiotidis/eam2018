@@ -83,4 +83,14 @@ export class StudentsComponent implements OnInit {
           window.alert("User with same email already exists!");
       });
   }
+
+  onDeclarationConfirm(){
+    var loginState = this.sessionSt.retrieve('loginState')
+    if(loginState != true){
+      this.router.navigate(["login"])
+    }
+    else{
+      this.page = "confirmation"
+    }
+  }
 }

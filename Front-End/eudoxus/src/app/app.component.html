@@ -98,14 +98,6 @@
                         </i>
                     </button>
                 </form>
-                <!-- <i class="material-icons large">
-                    account_circle
-                </i>
-                <h5>
-                    <small>
-                        <a href="/login">Είδοδος/Εγγραφή</a>
-                    </small>
-                </h5> -->
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons large">
@@ -115,7 +107,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="/login">Είσοδος</a>
                         <a class="dropdown-item" href="/signup">Εγγραφή</a>
-                        <a class="dropdown-item" href="/logout">Αποσύνδεση</a>
+                        <a class="dropdown-item" routerLink="/" (click)="onLogout()">Αποσύνδεση</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +115,7 @@
         <router-outlet></router-outlet>
     </body>
         
-    <footer class="page-footer fixed-bottom font-small blue pt-4 border">
+    <footer class="page-footer fixed-bottom font-small blue pt-2 border">
 
             <!-- Footer Links -->
             <div class="container-fluid text-center text-md-left">
@@ -180,8 +172,8 @@
             <!-- Footer Links -->
         
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">
-                © 2019 Di@Uoa
+            <div class="footer-copyright text-center">
+                © 2019 Di@UoA
             </div>
             <!-- Copyright -->
         

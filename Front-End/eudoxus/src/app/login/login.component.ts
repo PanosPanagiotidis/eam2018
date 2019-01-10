@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
+  onLogin(){
     this.loginSer.login(this.loginform.value.email,this.loginform.value.password).subscribe(
       res=>{
         if(res)
@@ -30,5 +30,4 @@ export class LoginComponent implements OnInit {
       }
     )
   }
-
 }

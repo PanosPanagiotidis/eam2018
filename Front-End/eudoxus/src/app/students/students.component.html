@@ -77,12 +77,36 @@
             </div>
             </div>
         </div>
-        <button type="button" class="btn float-right mt-1">Επιβεβαίωση</button>
+        <button type="button" class="btn float-right mt-1" (click)="onDeclarationConfirm()">Επιβεβαίωση</button>
     </div>
         
 </div>
 <div *ngIf="page=='confirmation'">
-    student confirmation
+    <div id="accordion" class="mx-auto w-50 mt-5">
+        <h3>Επιβεβαίωση Δήλωσης</h3>
+        <div class="card">
+            <div class="card-header p-0" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Σύγγραμμα 1ο
+                </button>
+            </h5>
+            </div>
+        
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                ΕΠΙΚΟΙΝΩΝΙΑ ΑΝΘΡΩΠΟΥ ΜΗΧΑΝΗΣ
+                <div class="form-group">
+                    <select class="form-control w-50" id="sel1">
+                        <option>Επιλέξτε σύγγραμμα</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>   
+            </div>
+            </div>
+        </div>
 </div>
 <div *ngIf="page=='exchange'">
     student exchange

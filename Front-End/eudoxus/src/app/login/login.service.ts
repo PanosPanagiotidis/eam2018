@@ -13,6 +13,7 @@ export class LoginService {
   login(email,password){
     this.sessionSt.store('email',email);
     this.sessionSt.store('password',password);
+    this.sessionSt.store('loginState',true);
     const httpOptions={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -20,5 +21,11 @@ export class LoginService {
       }),
     };
     return this.http.get<number>(h.host+'/login',httpOptions);
+  }
+
+  logout(){
+    this.sessionSt.store('email',null);
+    this.sessionSt.store('password',null);
+    this.sessionSt.store('loginState',false);
   }
 }
