@@ -380,7 +380,7 @@ public class MainController {
 			returnbooks.add(book);
 			return returnbooks;
 		}
-		book=bookRepository.findByISBN(query);
+		book=bookRepository.findByIsbn(query);
 		if(book!=null)
 		{
 			returnbooks.add(book);
@@ -404,9 +404,9 @@ public class MainController {
 			return false;
 		Book book=new Book();
 		stk = new StringTokenizer(credentials,":");
-		String isbn;
-		while(!(isbn=stk.nextToken()).equals("end")) {
-			book=bookRepository.findByISBN(isbn);
+		String Isbn;
+		while(!(Isbn=stk.nextToken()).equals("end")) {
+			book=bookRepository.findByIsbn(Isbn);
 			shmeio_Dianomhs.addBook(book);
 			shmeio_DianomhsRepository.save(shmeio_Dianomhs);
 			book.addShmeio_Dianomhs(shmeio_Dianomhs);
@@ -484,7 +484,7 @@ public class MainController {
 		for(Book book1: foithths.getBooks_taken()) {
 			int flag=1;
 			for(Book book2 :foithths.getBooks_exhanged()) {
-				if(book1.getISBN().equals(book2.getISBN())){
+				if(book1.getIsbn().equals(book2.getIsbn())){
 					flag=0;
 					break;
 				}
@@ -509,10 +509,10 @@ public class MainController {
 		if(!foithths.getPassword().equals(password))
 			return false;
 		stk = new StringTokenizer(credentials,":");
-		String isbn;
+		String Isbn;
 		Book book=new Book();
-		while(!(isbn=stk.nextToken()).equals("end")) {
-			book=bookRepository.findByISBN(isbn);
+		while(!(Isbn=stk.nextToken()).equals("end")) {
+			book=bookRepository.findByIsbn(Isbn);
 			foithths.addBook_exhange(book);
 			foiththsRepository.save(foithths);
 		}
@@ -533,13 +533,13 @@ public class MainController {
 		if(!foithths.getPassword().equals(password))
 			return null;
 		stk = new StringTokenizer(credentials,":");
-		String isbn=stk.nextToken();
+		String Isbn=stk.nextToken();
 		List<Foithths> foithtes=foiththsRepository.findAll();
 		List<Foithths> returnfoithtes=new ArrayList<Foithths>();
 		for(Foithths tempfoithths: foithtes) {
 			int flag=1;
 			for(Book book:tempfoithths.getBooks_exhanged()) {
-				if(book.getISBN().equals(isbn)){
+				if(book.getIsbn().equals(Isbn)){
 					flag=0;
 					break;
 				}
