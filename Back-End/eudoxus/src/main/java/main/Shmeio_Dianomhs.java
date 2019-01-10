@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Shmeio_Dianomhs {
 	@Id
@@ -80,6 +82,7 @@ public class Shmeio_Dianomhs {
 	public void addBook(Book book) {
 		this.books.add(book);
 	}
+	@JsonIgnore
 	public List<Book> getBooks(){
 		return books;
 	}

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Book {
 	@Id
@@ -70,6 +72,7 @@ public class Book {
 	public void addShmeio_Dianomhs(Shmeio_Dianomhs shmeio_Dianomhs) {
 		this.shmeia_Dianomhs.add(shmeio_Dianomhs);
 	}
+	@JsonIgnore
 	public List<Shmeio_Dianomhs> getShmeia_Dianomhs(){
 		return shmeia_Dianomhs;
 	}

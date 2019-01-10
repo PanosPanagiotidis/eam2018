@@ -342,6 +342,7 @@ public class DbInitializator implements CommandLineRunner {
 		foithths.addBook(book6);
 		foithths.addLesson(lesson3);
 		foiththsRepository.save(foithths);
+		return;
 		
     }
 }
