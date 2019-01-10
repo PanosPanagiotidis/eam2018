@@ -57,7 +57,7 @@ export class StudentsComponent implements OnInit {
       )
     }
     if(this.page=='exhange'){
-      this.studentSer.getavailablebooksforexhange().subscribe(
+      this.studentSer.getavailablebookstoexhange().subscribe(
         (res:any[])=>{
           this.exhangebooks=res;
         }
