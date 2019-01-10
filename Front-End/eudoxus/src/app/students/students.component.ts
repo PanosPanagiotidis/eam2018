@@ -30,7 +30,6 @@ export class StudentsComponent implements OnInit {
   book5: string;
   book6: string;
   book7: string;
-  book8: string;
   ngOnInit() {
     this.page=this.route.snapshot.paramMap.get('type');
     if(this.page=='details'){
@@ -82,7 +81,7 @@ export class StudentsComponent implements OnInit {
     }
     else{
       this.page = "confirmation"
-      this.studentSer.declareBooks(this.book1,this.book2,this.book3,this.book4,this.book5,this.book6,this.book7,this.book8).subscribe()
+      this.studentSer.declareBooks(this.book1,this.book2,this.book3,this.book4,this.book5,this.book6,this.book7).subscribe()
     }
   }
 

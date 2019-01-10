@@ -16,8 +16,33 @@ export class ProfileComponent implements OnInit {
   constructor(private sessionSt:SessionStorageService,private studentSer:StudentsService, private router:Router,private route: ActivatedRoute) { }
   change=0;
   user: any;
+  university: any;
+  department: any;
+  booksofthisseason: any[]=[];
+  historyoforders: any[]=[];
+  exhangebooks: any[]=[];
+  loginState = false;
   ngOnInit() {
-    
+    this.loginState = this.sessionSt.retrieve("loginState")
+    if(this.loginState == false){
+      this.router.navigate(["login"])
+    }
+
+    this.studentSer.getdetails().subscribe(
+      (res:any)=>{
+        this.user=res;
+        }
+    );
+    // this.studentSer.getuniversity().subscribe(
+    //   (res:any)=>{
+    //     this.university=res;
+    //     }
+    // );
+    // this.studentSer.getdepartment().subscribe(
+    //   (res:any)=>{
+    //     this.department=res;
+    //     }
+    // );
   }
 
 

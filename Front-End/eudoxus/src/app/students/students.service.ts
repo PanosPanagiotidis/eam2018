@@ -114,7 +114,7 @@ export class StudentsService {
     return this.http.put<any[]>(h.host+'/getexhangersforbook',isbn,httpOptions); 
   }
 
-  declareBooks(book1,book2,book3,book4,book5,book6,book7,book8){
+  declareBooks(book1,book2,book3,book4,book5,book6,book7){
     var email=this.sessionSt.retrieve('email');
     var password=this.sessionSt.retrieve('password');
     const httpOptions={
@@ -123,7 +123,7 @@ export class StudentsService {
         'Authorization': 'Basic ' + btoa(email+':'+password)
       }),
     };
-    var books = book1+':'+book2+':'+book3+':'+book4+':'+book5+':'+book6+':'+book7+':'+book8
+    var books = book1+':'+book2+':'+book3+':'+book4+':'+book5+':'+book6+':'+book7
     return this.http.put<number>(h.host+'/declareBooks',books,httpOptions);
   }
 }

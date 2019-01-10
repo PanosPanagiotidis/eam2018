@@ -566,10 +566,11 @@ public class MainController {
 			return ;
 		stk = new StringTokenizer(books,":");
 		String token = stk.nextToken();
-		while(token!=null){
+		while(stk.hasMoreTokens()){
 			Book book = new Book();
 			book.setTitle(token);
 			foithths.addBook_declared(book);
+			bookRepository.save(book);
 			token = stk.nextToken();
 		}
 		foiththsRepository.save(foithths);
