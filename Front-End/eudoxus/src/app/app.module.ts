@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DistributionpointComponent } from './distributionpoint/distributionpoint.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SearchComponent } from './search/search.component';
+import { Globals } from './globals';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     SignupComponent,
     DistributionpointComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

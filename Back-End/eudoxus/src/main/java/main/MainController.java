@@ -359,20 +359,9 @@ public class MainController {
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, path="/searchbooks")
-	public @ResponseBody Iterable<Book> searchbooks(@RequestHeader("Authorization") String encoded,@RequestBody String credentials) {
-		StringTokenizer stk = new StringTokenizer(encoded," ");
-		stk.nextToken();
-		encoded = stk.nextToken();
-		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
-		String decoded = new String(decodedBytes);
-		stk = new StringTokenizer(decoded,":");
-		String email=stk.nextToken();
-		String password=stk.nextToken();
-		Shmeio_Dianomhs shmeio_Dianomhs=shmeio_DianomhsRepository.findByEmail(email);
-		if(!shmeio_Dianomhs.getPassword().equals(password))
-			return null;
+	public @ResponseBody Iterable<Book> searchbooks(@RequestBody String credentials) {
 		List<Book> returnbooks=new ArrayList<Book>();
-		stk = new StringTokenizer(credentials,":");
+		StringTokenizer stk = new StringTokenizer(credentials,":");
 		String query=stk.nextToken();
 		Book book=bookRepository.findByTitle(query);
 		if(book!=null)

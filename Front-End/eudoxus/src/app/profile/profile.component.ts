@@ -33,16 +33,16 @@ export class ProfileComponent implements OnInit {
         this.user=res;
         }
     );
-    // this.studentSer.getuniversity().subscribe(
-    //   (res:any)=>{
-    //     this.university=res;
-    //     }
-    // );
-    // this.studentSer.getdepartment().subscribe(
-    //   (res:any)=>{
-    //     this.department=res;
-    //     }
-    // );
+    this.studentSer.getuniversity().subscribe(
+      (res:any)=>{
+        this.university=res;
+        }
+    );
+    this.studentSer.getdepartment().subscribe(
+      (res:any)=>{
+        this.department=res;
+        }
+    );
   }
 
 
