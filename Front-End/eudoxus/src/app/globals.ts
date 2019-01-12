@@ -3,5 +3,5 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Globals {
-    keyword: string
+    results: any[]
 }

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login/login.service'
 import { Router, ActivatedRoute} from '@angular/router';
+import { SearchService } from './search/search.service';
 import { Globals } from './globals'
+
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { Globals } from './globals'
 })
 
 export class AppComponent {
-  constructor(private loginSer:LoginService,private router:Router,private globals:Globals) { }
+  constructor(private loginSer:LoginService,private router:Router,private globals:Globals, private searchSer:SearchService) { }
 
   searchInput:any
 
@@ -21,7 +23,12 @@ export class AppComponent {
   }
 
   onSearch(){
-    this.globals.keyword = this.searchInput
-    this.router.navigate(["search"])
+    this.searchSer.searchBook(this.searchInput).subscribe(
+      (res:any)=>{
+        this.globals.results=res
+        console.log(this.globals.results)
+        this.router.navigate(["search"])
+      }
+    )
   }
 }

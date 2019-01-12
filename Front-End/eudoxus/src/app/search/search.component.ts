@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
-import { SearchService } from './search.service';
 import { Globals } from '../globals';
 
 @Component({
@@ -10,15 +9,11 @@ import { Globals } from '../globals';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private globals:Globals, private searchSer:SearchService) { }
-  keyword=""
-  results:any[]
+  constructor(private route: ActivatedRoute, private globals:Globals, ) { }
+  results = this.globals.results
+
   ngOnInit() {
-    this.searchSer.searchBook(this.globals.keyword).subscribe(
-      (res:any)=>{
-        this.results=res
-      }
-    )
+    
   }
 
 }
