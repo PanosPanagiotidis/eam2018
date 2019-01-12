@@ -127,7 +127,7 @@
 </div>
 
 <div *ngIf="page=='confirmation'">
-    <div id="accordion" class="mx-auto w-50 mt-5">
+    <div id="accordion" class="mx-auto w-50 mt-5 .info">
         <h3>Επιβεβαίωση Δήλωσης</h3>
         <div class="card">
             <div class="card-header p-0" id="headingOne">
@@ -161,5 +161,74 @@
     student history done
 </div>
 <div *ngIf="page=='info'">
-    student info
+	 <div id="accordion" class="mx-auto w-50 mt-5">
+		<div class="card info-box">
+                    <div class="card-header p-0" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                            Πληροφορίες για δηλώσεις συγγραμάτων
+                            </button>
+                        </h5>
+                    </div>
+                
+                    <div id="collapseOne1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <h3>Προαπαιτούμενα δηλώσεων συγγραμάτων.</h3>
+                            <div class="form-group">
+                            	<p>
+								Για την δήλωση συγγραμάτων είναι απαραίτητο να πληρούνται οι εξής απαιτήσεις :
+							</p>
+								<ul>
+									<li>Να έχετε μέσο όρο στο προηγούμενο εξάμηνο >=8.5</li>
+									<li>Να έχετε δημοσιεύσει τουλάχιστον 3 papers πάνω σε καινούριο πεδίο</li>
+								</ul>
+
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+                <div class="card  info-box">
+                        <div class="card-header p-0" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                            Προθεσμίες
+                            </button>
+                        </h5>
+                        </div>
+                    
+                        <div id="collapseOne2" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                               <h3> Προθεσμία Δήλωσης Συγγραμάτων</h3>
+                               <div class = "form-group">
+                               	<p>
+                               		Οι δηλώσεις συγγραμάτων θα ολοκληρωθούν Παρασκευή 18 Ιανουαρίου 2019
+                               	</p>
+								<h3> Προθεσμία Παραλαβής Συγγραμάτων</h3>
+                                <div class="form-group">
+									<p>
+										Η παραλαβή συγγραμάτων θα ολοκληρωθεί Σάββατο 19 Ιανουρίου 2019
+									</p>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card  info-box">
+                        <div class="card-header p-0" id="headingOne3">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                           	Πληροφορίες για σημεία διανομής
+                            </button>
+                        </h5>
+                        </div>
+                    
+                        <div id="collapseOne3" class="collapse" aria-labelledby="headingOne3" data-parent="#accordion">
+                            <div class="card-body">
+                                <h3>Σημεία Διανομής</h3>
+                                <div class="form-group">
+									Τα σημεία διανομής μπορείτε να τα βρείτε στην μπάρα πλοήγησης,στην κορυφή της σελίδας,κάτω από τον σύνδεσμο Σημεία Διανομής.
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
 </div>
