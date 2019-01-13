@@ -23,6 +23,7 @@ export class StudentsComponent implements OnInit {
   booksofthisseason: any[]=[];
   historyoforders: any[]=[];
   exhangebooks: any[]=[];
+  declaredBooks: any[]
   book1: string;
   book2: string;
   book3: string;
@@ -80,8 +81,29 @@ export class StudentsComponent implements OnInit {
       this.router.navigate(["login"])
     }
     else{
-      this.page = "confirmation"
-      this.studentSer.declareBooks(this.book1,this.book2,this.book3,this.book4,this.book5,this.book6,this.book7).subscribe()
+      var books = []
+      books.push(this.book1)
+      books.push(this.book2)
+      books.push(this.book3)
+      books.push(this.book4)
+      books.push(this.book5)
+      books.push(this.book6)
+      books.push(this.book7)
+      this.studentSer.declareBooks(books).subscribe(
+        res=>{
+          this.studentSer.getDeclaredBooks().subscribe(
+            res=>{
+              this.declaredBooks = res
+              this.studentSer.getdetails().subscribe(
+                (res:any)=>{
+                  this.user=res;
+                  this.page = "confirmation"
+                  }
+              );
+            }
+          )
+        }
+      )
     }
   }
 

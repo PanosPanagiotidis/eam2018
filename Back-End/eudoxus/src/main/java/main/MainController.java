@@ -15,6 +15,7 @@ import java.util.Base64;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -311,7 +312,7 @@ public class MainController {
 		return departmentRepository.findAllByUniversity(university);
 	}
 
-	@RequestMapping(method=RequestMethod.GET, path="/getseason")
+	@RequestMapping(method=RequestMethod.GET, path="/getseasonbooks")
 	public @ResponseBody Iterable<Lesson> getseasonbooks(@RequestHeader("Authorization") String encoded) {
 		StringTokenizer stk = new StringTokenizer(encoded," ");
 		stk.nextToken();
@@ -554,15 +555,52 @@ public class MainController {
 		if(!foithths.getPassword().equals(password))
 			return ;
 		stk = new StringTokenizer(books,":");
-		String token = stk.nextToken();
+		String token;
 		while(stk.hasMoreTokens()){
+			token = stk.nextToken();
 			Book book = new Book();
 			book.setTitle(token);
 			foithths.addBook_declared(book);
 			bookRepository.save(book);
-			token = stk.nextToken();
 		}
+		Random r = new Random();
+		int lowerBound = 100000;
+		int upperBound = 1000000;
+		int result = r.nextInt(upperBound-lowerBound) + lowerBound;
+		foithths.setPin(Integer.toString(result));
 		foiththsRepository.save(foithths);
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/getDeclaredBooks")
+	public @ResponseBody Iterable<Book> getDeclaredBooks(@RequestHeader("Authorization") String encoded) throws IOException {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		if(!foithths.getPassword().equals(password))
+			return null;
+		return foithths.getBooks_declared();
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/getDeclarationId")
+	public @ResponseBody int getDeclarationId(@RequestHeader("Authorization") String encoded) throws IOException {
+		StringTokenizer stk = new StringTokenizer(encoded," ");
+		stk.nextToken();
+		encoded = stk.nextToken();
+		byte[] decodedBytes = Base64.getDecoder().decode(encoded);
+		String decoded = new String(decodedBytes);
+		stk = new StringTokenizer(decoded,":");
+		String email=stk.nextToken();
+		String password=stk.nextToken();
+		Foithths foithths=foiththsRepository.findByEmail(email);
+		if(!foithths.getPassword().equals(password))
+			return -1;
+		return foithths.getAM();
 	}
 	
 }

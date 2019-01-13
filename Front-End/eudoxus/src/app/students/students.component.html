@@ -1,4 +1,10 @@
 <div *ngIf="page=='declaration'">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/home">Αρχική</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Δήλωση Συγγραμμάτων</li>
+            </ol>
+        </nav>
         <div id="accordion" class="mx-auto w-50 mt-5">
         
                 <h3>Δήλωση Συγγραμμάτων</h3>
@@ -16,7 +22,7 @@
                             ΔΙΑΚΡΙΤΑ ΜΑΘΗΜΑΤΙΚΑ
                             <div class="form-group">
                                 <select class="form-control w-50" id="sel1" [(ngModel)]="book1">
-                                    <option>Επιλέξτε σύγγραμμα</option>
+                                    <option value=''>Επιλέξτε σύγγραμμα</option>
                                     <option>Διακριτά μαθηματικά και εφαρμογές τους</option>
                                     <option>ΣΤΟΙΧΕΙΑ ΔΙΑΚΡΙΤΩΝ ΜΑΘΗΜΑΤΙΚΩΝ</option>
                                 </select>
@@ -27,7 +33,7 @@
                             <div class="form-group">
                                 <select class="form-control w-50" id="sel1" [(ngModel)]="book2">
                                     <option>Επιλέξτε σύγγραμμα</option>
-                                    <option>C: Από τη Θεωρία στην Εφαρμογή</option>
+                                    <option>C Από τη Θεωρία στην Εφαρμογή</option>
                                     <option>Η ΓΛΩΣΣΑ C ΣΕ ΒΑΘΟΣ</option>
                                     <option>Εισαγωγή στον Προγραμματισμό με την C</option>
                                 </select>
@@ -127,28 +133,31 @@
 </div>
 
 <div *ngIf="page=='confirmation'">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/home">Αρχική</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Επιβεβαίωση Δήλωσης</li>
+        </ol>
+    </nav>
     <div id="accordion" class="mx-auto w-50 mt-5">
         <h3>Επιβεβαίωση Δήλωσης</h3>
         <div class="card">
             <div class="card-header p-0" id="headingOne">
             <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Σύγγραμμα 1ο
+                <button class="btn btn-link" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Δηλωμένα Συγγράμματα - Κωδικός Παραλαβής: 
                 </button>
+                <b>{{user.pin}}</b>
             </h5>
             </div>
         
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-                ΕΠΙΚΟΙΝΩΝΙΑ ΑΝΘΡΩΠΟΥ ΜΗΧΑΝΗΣ
-                <div class="form-group">
-                    <select class="form-control w-50" id="sel1">
-                        <option>Επιλέξτε σύγγραμμα</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                </div>   
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let book of declaredBooks">
+                        {{book.title}}
+                    </li>
+                </ul>
             </div>
             </div>
         </div>

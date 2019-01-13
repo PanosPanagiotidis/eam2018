@@ -11,9 +11,7 @@ export class LoginService {
   constructor(private http:HttpClient, private sessionSt:SessionStorageService) { }
 
   login(email,password){
-    this.sessionSt.store('email',email);
-    this.sessionSt.store('password',password);
-    this.sessionSt.store('loginState',true);
+    
     const httpOptions={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

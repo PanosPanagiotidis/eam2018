@@ -11,11 +11,35 @@
     <!-- allbooks -->
 </div>
 <div *ngIf="page=='delivery'">
-    <form (ngSubmit)="onSubmitdelivery()" #d="ngForm">
-        <input type="text" placeholder="PIN" ngModel name="pin">
-        <button type="submit">Submit</button>
-    </form>
+    <div class="form-group mx-auto w-25 mt-4">
+        <form (ngSubmit)="onSubmitdelivery()" #d="ngForm">
+            <label for="kwdikos">Εισάγετε κωδικό παραλαβής:</label>
+            <input type="text" class="form-control" placeholder="PIN" ngModel name="pin" id="kwdikos">
+            <button type="submit" class="btn btn-primary float-right mt-2">Επιβεβαίωση</button>
+        </form> 
+    </div>
 </div>
 <div *ngIf="page=='deliverybooks'">
-    <!-- books of the declaration of the student here -->
+        <div id="accordion" class="mx-auto w-50 mt-5">
+            <h3>Παράδοση Βιβλίων</h3>
+            <div class="card">
+                <div class="card-header p-0" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Δηλωμένα Συγγράμματα:
+                    </button>
+                </h5>
+                </div>
+            
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let book of deliverybooks">
+                            {{book.title}}
+                        </li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
 </div>

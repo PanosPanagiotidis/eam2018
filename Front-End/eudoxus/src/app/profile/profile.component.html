@@ -1,76 +1,114 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Αρχική</a></li>
+        <li class="breadcrumb-item active" aria-current="">Προφίλ</li>
+    </ol>
+</nav>
 <div *ngIf="userType == 'student'">
-  <div *ngIf="change==0"> 
-    <div class="mx-auto w-50 mt-4">
-      <ul class="list-group">
-        <li class="list-group-item">Πανεπιστήμιο:<span class="float-right">{{university.name}}</span></li>
-        <li class="list-group-item">Τμήμα:<span class="float-right">{{department.name}}</span></li>
-        <li class="list-group-item">Email:<span class="float-right">{{user.email}}</span></li>
-        <li class="list-group-item">Όνομα:<span class="float-right">{{user.name}}</span></li>
-        <li class="list-group-item">Επίθετο:<span class="float-right">{{user.surname}}</span></li>
-        <li class="list-group-item">ΑΜ:<span class="float-right">{{user.am}}</span></li>
-        <li class="list-group-item">Τηλέφωνο:<span class="float-right">{{user.phone}}</span></li>
-        <li class="list-group-item">Τρέχων Εξάμηνο:<span class="float-right">{{user.running_semester}}</span></li>
-        <li class="list-group-item">Αριθμός βιβλίων πρίν το σύστημα έυδοξος:<span class="float-right">{{user.num_of_previous_books}}</span></li>
-      </ul>
-      <button class="float-right btn btn-primary mt-2" (click)="change=1">Επεξεργασία Στοιχείων</button>
+    <div *ngIf="change==0"> 
+        <div class="mx-auto w-50 mt-4">
+            <ul class="list-group">
+                <li class="list-group-item">Πανεπιστήμιο:<span class="float-right">{{university.name}}</span></li>
+                <li class="list-group-item">Τμήμα:<span class="float-right">{{department.name}}</span></li>
+                <li class="list-group-item">Email:<span class="float-right">{{user.email}}</span></li>
+                <li class="list-group-item">Όνομα:<span class="float-right">{{user.name}}</span></li>
+                <li class="list-group-item">Επίθετο:<span class="float-right">{{user.surname}}</span></li>
+                <li class="list-group-item">ΑΜ:<span class="float-right">{{user.am}}</span></li>
+                <li class="list-group-item">Τηλέφωνο:<span class="float-right">{{user.phone}}</span></li>
+                <li class="list-group-item">Τρέχων Εξάμηνο:<span class="float-right">{{user.running_semester}}</span></li>
+                <li class="list-group-item">Αριθμός βιβλίων πρίν το σύστημα έυδοξος:<span class="float-right">{{user.num_of_previous_books}}</span></li>
+            </ul>
+            <button class="float-right btn btn-primary mt-2" (click)="change=1">Επεξεργασία Στοιχείων</button>
+        </div>
     </div>
-      
-  </div>
-  <div *ngIf="change==1">
-      <div class="mx-auto w-50 mt-4">
-        <form (ngSubmit)="onSubmitdetails()" #f="ngForm">
-          <div class="form-group">
-              <label for="exampleInputEmail1">Email</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" value="{{user.email}}" ngModel name="email">
-          </div>
-          <div class="form-group">
-              <label for="exampleInputPassword1">Κωδικός</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password1">
-          </div>
-          <div class="form-group">
-              <label for="exampleInputPassword2">Επιβεβαίωση Κωδικού</label>
-              <input type="password" class="form-control" id="exampleInputPassword2" value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password2">
-          </div>
-          <div class="form-group">
-              <label for="exampleInputName">Όνομα</label>
-              <input type="text" class="form-control" id="exampleInputName" value="{{user.name}}" placeholder="{{user.name}}" ngModel name="name">
-          </div>
-          <div class="form-group">
-              <label for="exampleInputSurname">Επίθετο</label>
-              <input type="text" class="form-control" id="exampleInputSurname" value="{{user.surname}}" placeholder="{{user.surname}}" ngModel name="surname">
-          </div>
-          <div class="form-group">
-              <label for="exampleInputTelephone">Τηλέφωνο</label>
-              <input class="form-control" id="exampleInputTelephone" type="tel" value="{{user.phone}}" placeholder="{{user.phone}}" ngModel name="tel">
-          </div>
-          <button class="float-right btn btn-primary" type="submit">Επιβεβαίωση Αλλαγών</button>
-      </form>
-      </div>
-      
-  </div>
+
+    <div *ngIf="change==1">
+        <div class="mx-auto w-50 mt-4">
+            <form (ngSubmit)="onSubmitdetails()" #f="ngForm">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" value="{{user.email}}" ngModel name="email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Κωδικός</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Επιβεβαίωση Κωδικού</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" value="{{user.password}}" placeholder="{{user.password}}" ngModel name="password2">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName">Όνομα</label>
+                    <input type="text" class="form-control" id="exampleInputName" value="{{user.name}}" placeholder="{{user.name}}" ngModel name="name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputSurname">Επίθετο</label>
+                    <input type="text" class="form-control" id="exampleInputSurname" value="{{user.surname}}" placeholder="{{user.surname}}" ngModel name="surname">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputTelephone">Τηλέφωνο</label>
+                    <input class="form-control" id="exampleInputTelephone" type="tel" value="{{user.phone}}" placeholder="{{user.phone}}" ngModel name="tel">
+                </div>
+                <button class="float-right btn btn-primary" type="submit">Επιβεβαίωση Αλλαγών</button>
+                <button class="float-right btn mr-2" (click)="change=0">Ακύρωση</button>
+            </form>
+        </div>
+    </div>
 </div>
-<div *ngIf="userType == 'distibutionPoint'"> 
-  <div *ngIf="change==0"> 
-      <p>Όνομα Σημειου:<span class="float-right">{{shmeio.name}}</span></p>
-      <p>Τυπος Σημείου:<span class="float-right">{{shmeio.type}}</span></p>
-      <p>email:<span class="float-right">{{shmeio.email}}</span></p>
-      <p>Διευθυνση:<span class="float-right">{{shmeio.address}}</span></p>
-      <p>Τηλέφωνο:<span class="float-right">{{shmeio.phone}}</span></p>
-      <p>Ωράριο:<span class="float-right">{{shmeio.time_open}}</span></p>
-      <p>Υπεύθυνος:<span class="float-right">{{shmeio.senior}}</span></p>
-      <button class="float-right btn btn-primary mt-2" (click)="change=1">Change</button>
-  </div>
-  <div *ngIf="change==1">
-      <form (ngSubmit)="onSubmitchange()" #f="ngForm">
-          <input type="text" value="{{shmeio.name}}" placeholder="{{shmeio.name}}" ngModel name="name">
-          <input type="email" value="{{shmeio.email}}" placeholder="{{shmeio.email}}" ngModel name="email">
-          <input type="password"  value="{{shmeio.password}}" placeholder="{{shmeio.password}}" ngModel name="password1">
-          <input type="password" value="{{shmeio.password}}" placeholder="{{shmeio.password}}" ngModel name="password2">
-          <input type="text" value="{{shmeio.address}}" placeholder="{{shmeio.address}}" ngModel name="address">
-          <input type="tel" value="{{shmeio.phone}}" placeholder="{{shmeio.phone}}" ngModel name="tel">
-          <input type="text" value="{{shmeio.time_open}}" placeholder="{{shmeio.time_open}}" ngModel name="time_open">
-          <input type="text" value="{{shmeio.senior}}" placeholder="{{shmeio.senior}}" ngModel name="senior">
-          <button type="submit">Update</button>
-      </form>
-  </div>
+
+<div *ngIf="userType == 'distributionPoint'"> 
+    <div *ngIf="change==0"> 
+        <div class="mx-auto w-50 mt-4">
+            <ul class="list-group">
+                <li class="list-group-item">Όνομα Σημειου:<span class="float-right">{{shmeio.name}}</span></li>
+                <li class="list-group-item">Τύπος Σημείου:<span class="float-right">{{shmeio.type}}</span></li>
+                <li class="list-group-item">Email:<span class="float-right">{{shmeio.email}}</span></li>
+                <li class="list-group-item">Διεύθυνση:<span class="float-right">{{shmeio.address}}</span></li>
+                <li class="list-group-item">Τηλέφωνο:<span class="float-right">{{shmeio.phone}}</span></li>
+                <li class="list-group-item">Ωράριο:<span class="float-right">{{shmeio.time_open}}</span></li>
+                <li class="list-group-item">Υπεύθυνος:<span class="float-right">{{shmeio.senior}}</span></li>
+            </ul>
+            <button class="float-right btn btn-primary mt-2" (click)="change=1">Επεξεργασία Στοιχείων</button>
+        </div>
+    </div>
+    <div *ngIf="change==1">
+            <div class="mx-auto w-50 mt-4">
+                <form (ngSubmit)="onSubmitchange()" #f="ngForm">
+                    <div class="form-group">
+                        <label for="onoma">Όνομα</label>
+                        <input type="text" class="form-control" id="onoma" value="{{shmeio.name}}" placeholder="{{shmeio.name}}" ngModel name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" value="{{shmeio.email}}" placeholder="{{shmeio.email}}" ngModel name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword2">Κωδικός</label>
+                        <input type="password" class="form-control" id="kwdikos1" value="{{shmeio.password}}" ngModel name="password1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName">Επιβεβαίωση Κωδικού</label>
+                        <input type="password" class="form-control" id="kwdikos2" value="{{shmeio.password}}" ngModel name="password2">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Διεύθυνση</label>
+                        <input type="text" class="form-control" id="address" value="{{shmeio.address}}" placeholder="{{shmeio.address}}" ngModel name="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Τηλέφωνο</label>
+                        <input class="form-control" id="phone" type="tel" value="{{shmeio.phone}}" placeholder="{{shmeio.phone}}" ngModel name="tel">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Ωράριο</label>
+                        <input class="form-control" id="time" type="text" value="{{shmeio.time_open}}" placeholder="{{shmeio.time_open}}" ngModel name="time_open">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputTelephone">Υπεύθυνος</label>
+                        <input class="form-control" id="senior" type="text" value="{{shmeio.senior}}" placeholder="{{shmeio.senior}}" ngModel name="senior">
+                    </div>
+                    <button class="float-right btn btn-primary" type="submit">Επιβεβαίωση Αλλαγών</button>
+                    <button class="float-right btn mr-2" (click)="change=0">Ακύρωση</button>
+                </form>
+            </div>
+    </div>
 </div>
