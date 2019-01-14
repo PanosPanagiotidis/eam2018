@@ -15,6 +15,7 @@ import { DistributionpointComponent } from './distributionpoint/distributionpoin
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { Globals } from './globals';
+import { BrowseComponent } from './browse/browse.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { Globals } from './globals';
     SignupComponent,
     DistributionpointComponent,
     ProfileComponent,
-    SearchComponent
+    SearchComponent,
+    BrowseComponent
   ],
   imports: [
     BrowserModule,

@@ -355,7 +355,7 @@ public class MainController {
 		if(!foithths.getPassword().equals(password))
 			return null;
 		List<Book> returnbooks=new ArrayList<Book>();
-		returnbooks=foithths.getBooks_taken();
+		returnbooks=foithths.getBooks_declared();
 		return returnbooks;
 	}
 	
@@ -422,23 +422,24 @@ public class MainController {
 		String pin=stk.nextToken();
 		Foithths foithths=foiththsRepository.findByPin(pin);
 		List<Book> books_declared=foithths.getBooks_declared();
-		List<Book> returnBooks=new ArrayList<Book>();
-		for(Book book: books_declared) {
-			int flag=1;
-			for(Shmeio_Dianomhs shmeiodianomhs:book.getShmeia_Dianomhs()) {
-				if(shmeiodianomhs.getEmail().equals(shmeio_Dianomhs.getEmail())){
-					flag=0;
-					break;
-				}
-			}
-			if(flag==0) {
-				foithths.addBook(book);
-				foithths.removeBook_declared(book);
-				returnBooks.add(book);
-			}
-		}
-		foiththsRepository.save(foithths);
-		return returnBooks;
+//		List<Book> returnBooks=new ArrayList<Book>();
+//		for(Book book: books_declared) {
+//			System.out.println(book);
+//			int flag=1;
+//			for(Shmeio_Dianomhs shmeiodianomhs:book.getShmeia_Dianomhs()) {
+//				if(shmeiodianomhs.getEmail().equals(shmeio_Dianomhs.getEmail())){
+//					flag=0;
+//					break;
+//				}
+//			}
+//			if(flag==0) {
+//				foithths.addBook(book);
+//				foithths.removeBook_declared(book);
+//				returnBooks.add(book);
+//			}
+//		}
+//		foiththsRepository.save(foithths);
+		return books_declared;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, path="/getallbooks")
@@ -558,10 +559,8 @@ public class MainController {
 		String token;
 		while(stk.hasMoreTokens()){
 			token = stk.nextToken();
-			Book book = new Book();
-			book.setTitle(token);
+			Book book = bookRepository.findByTitle(token);
 			foithths.addBook_declared(book);
-			bookRepository.save(book);
 		}
 		Random r = new Random();
 		int lowerBound = 100000;
@@ -603,4 +602,13 @@ public class MainController {
 		return foithths.getAM();
 	}
 	
+	@RequestMapping(method=RequestMethod.GET, path="/getDepartments")
+	public @ResponseBody Iterable<Department> getDepartments() throws IOException {
+		return departmentRepository.findAll();
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, path="/getDistPoints")
+	public @ResponseBody Iterable<Shmeio_Dianomhs> getDistPoints() throws IOException {
+		return shmeio_DianomhsRepository.findAll();
+	}
 }

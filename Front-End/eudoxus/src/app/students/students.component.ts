@@ -60,7 +60,7 @@ export class StudentsComponent implements OnInit {
     if(this.page=='history'){
       this.studentSer.gethistory().subscribe(
         (res:any[])=>{
-          this.historyoforders=res;
+          this.declaredBooks=res;
         }
       )
     }

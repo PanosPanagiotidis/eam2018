@@ -1,0 +1,100 @@
+<div *ngIf = "browseType == 'books'">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/home">Αρχική</a></li>
+          <li class="breadcrumb-item" aria-current="">Περιήγηση</li>
+          <li class="breadcrumb-item active" aria-current="">Συγγράμματα</li>
+      </ol>
+  </nav>
+
+  <div id="accordion" class="mx-auto w-50 mt-5">
+      <h3>Συγγράμματα</h3>
+      <div *ngFor="let dept of departments; let i = index" class="card">
+          <div class="card-header p-0" id="head{{i}}">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{dept.name}}
+                </button>
+            </h5>
+          </div>
+      
+          <div id="collapse{{i}}" class="collapse show" aria-labelledby="head" data-parent="#accordion">
+            <div class="card-body">
+              <div id="accordion2" class="mx-auto mt-1">
+                <div *ngFor="let lesson of dept.lessons" class="card">
+                  <div class="card-header p-0" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            {{lesson.name}}
+                        </button>
+                    </h5>
+                  </div>
+                  <div class="card-body">
+                    <ul class="list-group">
+                      <li class="list-group-item" *ngFor="let book of lesson.books">
+                          {{book.title}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+<div *ngIf = "browseType == 'distributionPoints'">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/home">Αρχική</a></li>
+          <li class="breadcrumb-item" aria-current="">Περιήγηση</li>
+          <li class="breadcrumb-item active" aria-current="">Σημεία Διανομής</li>
+      </ol>
+  </nav>
+
+  <div class="album py-5 bg-light">
+      <div class="container">
+  
+        <div class="row">
+  
+          <div class="col-4" *ngFor="let distPoint of distpoints">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top img-thumbnail" style="width: auto; height: 300px;" src="https://www.crowbooks.com/sites/crowbooks.com/files/styles/slideshow_home_page/public/front%201.jpg?itok=Qxzskyn0" alt="Card image cap">
+              <div class="card-body">
+                <h3>{{distPoint.name}}</h3>
+                <!-- <p><b class="mt-0 mb-1">Όνομα: </b> {{distPoint.name}}</p>  -->
+                <p><b class="mt-0 mb-1">Διεύθυνση: </b> {{distPoint.address}}</p> 
+                <p><b class="mt-0 mb-1">Email: </b> {{distPoint.email}}</p> 
+                <p><b class="mt-0 mb-1">Τηλέφωνο: </b> {{distPoint.phone}}</p> 
+                <p><b class="mt-0 mb-1">Ωράριο: </b> {{distPoint.time_open}}</p> 
+                <p><b class="mt-0 mb-1">Υπέυθυνος: </b> {{distPoint.senior}}</p> 
+                <p><b class="mt-0 mb-1">Τύπος: </b> {{distPoint.type}}</p> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- <ul class="list-group mx-auto w-50">
+    <li class="list-group-item" *ngFor="let distPoint of distpoints">
+      <ul>
+        <li class="media">
+          <img class="image-thumbnail mr-3" style="max-width:100px;max-height:100px" src="https://www.crowbooks.com/sites/crowbooks.com/files/styles/slideshow_home_page/public/front%201.jpg?itok=Qxzskyn0">
+          
+          <div class="media-body">
+            <p><b class="mt-0 mb-1">Όνομα: </b> {{distPoint.name}}</p> 
+            <p><b class="mt-0 mb-1">Διεύθυνση: </b> {{distPoint.address}}</p> 
+            <p><b class="mt-0 mb-1">Email: </b> {{distPoint.email}}</p> 
+            <p><b class="mt-0 mb-1">Τηλέφωνο: </b> {{distPoint.phone}}</p> 
+            <p><b class="mt-0 mb-1">Ωράριο: </b> {{distPoint.time_open}}</p> 
+            <p><b class="mt-0 mb-1">Υπέυθυνος: </b> {{distPoint.senior}}</p> 
+            <p><b class="mt-0 mb-1">Τύπος: </b> {{distPoint.type}}</p> 
+          </div>
+        </li>
+      </ul>
+    </li>
+  </ul> -->
+</div>

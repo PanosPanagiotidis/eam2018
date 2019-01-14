@@ -1,3 +1,9 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Αρχική</a></li>
+        <li class="breadcrumb-item active" aria-current="">Εγγραφή</li>
+    </ol>
+</nav>
 <div class="mx-auto mt-4 w-25 pb-5 mb-5 bb-5 h-100">
     <form (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="form-group">
@@ -45,22 +51,31 @@
         </div>
       </div>
       <div *ngIf="registrationtype==2;">
-        <input type="text" placeholder="Όνομα Σημείου Διανομής" ngModel name="name">
+        Όνομα Σημείου Διανομής
+        <input type="text" class="form-control" placeholder="Σημείο Διανομής" ngModel name="name">
+        Επιλέξτε Τύπο Σημείου Διανομής
         <div class="form-group">
           <select class="form-control w-100" id="sel1" ngModel name=class_type>
-            <option value=''>--Διαλεξε Τύπο Σημειου Διανομης--</option>
+            <option value=''>--Τύπος Σημείου Διανομής--</option>
             <option *ngFor="let class_type of class_types2" >{{class_type}}</option>
           </select>
         </div>
         
-        <input type="text" placeholder="Διεύθυνση" ngModel name="address">
-        <input type="email" placeholder="e-mail" ngModel name="email">
-        <input type="password" placeholder="Password" ngModel name="password1">
-        <input type="password" placeholder="Επανάληψη Password" ngModel name="password2">
-        <input type="tel" placeholder="Τηλέφωνο" ngModel name="tel">
-        <input type="text" placeholder="Ωράριο Λειτουργίας" ngModel name="time_open">
-        <input type="text" placeholder="Όνοματεπωνυμο Υπευθύνου" ngModel name="senior">
-        <button type="submit" class="mb-5">SignUp</button>
+        Διεύθυνση
+        <input type="text" class="form-control" placeholder="Διεύθυνση" ngModel name="address">
+        Email
+        <input type="email" class="form-control" placeholder="shmeiodianomhs@email.com" ngModel name="email">
+        Κωδικός
+        <input type="password" class="form-control" placeholder="Password" ngModel name="password1">
+        Επιβεβαίωση Κωδικού
+        <input type="password" class="form-control" placeholder="Επανάληψη Password" ngModel name="password2">
+        Τηλέφωνο
+        <input type="tel" class="form-control" placeholder="6982854540" ngModel name="tel">
+        Ωράριο Λειτουργίας
+        <input type="text" class="form-control" placeholder="24/7" ngModel name="time_open">
+        Όνοματεπωνυμο Υπευθύνου
+        <input type="text" class="form-control" placeholder="Μάκης" ngModel name="senior">
+        <button type="submit" class="btn btn-primary float-right mt-2">Εγγραφή</button>
       </div>         
     </form>
 </div>
